@@ -1,17 +1,21 @@
-package fr.abbo.eArche.models;
+package fr.abbo.septArche.models;
 
 public class Livres {
 
     private  String titre;
     private String editeur;
     private String auteur;
-    private int ISSBN;
+    private int ISBN;
 
-    public Livres(String titre, String editeur, String auteur, int ISSBN) {
+    public Livres() {
+
+    }
+
+    public Livres(String titre, String editeur, String auteur, int ISBN) {
         this.titre = titre;
         this.editeur = editeur;
         this.auteur = auteur;
-        this.ISSBN = ISSBN;
+        this.ISBN = ISBN;
     }
 
     public String getTitre() {
@@ -38,12 +42,12 @@ public class Livres {
         this.auteur = auteur;
     }
 
-    public int getISSBN() {
-        return ISSBN;
+    public int getISBN() {
+        return ISBN;
     }
 
-    public void setISSBN(int ISSBN) {
-        this.ISSBN = ISSBN;
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class Livres {
                 "titre='" + titre + '\'' +
                 ", editeur='" + editeur + '\'' +
                 ", auteur='" + auteur + '\'' +
-                ", ISSBN=" + ISSBN +
+                ", ISBN=" + ISBN +
                 '}';
     }
 }

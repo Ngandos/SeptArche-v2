@@ -1,4 +1,4 @@
-package fr.abbo.eArche;
+package fr.abbo.septArche;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

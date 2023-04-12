@@ -1,4 +1,4 @@
-package fr.abbo.eArche.models;
+package fr.abbo.septArche.models;
 public class Articles {
     private int id;
     private String category;
