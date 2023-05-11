@@ -1,21 +1,26 @@
 package fr.abbo.septArche.models;
 
-public class Livres {
+import jakarta.persistence.*;
 
-    private  String titre;
+@Entity
+@Table(name = "livres")
+@PrimaryKeyJoinColumn(name = "id")
+public class Livres extends Articles {
+    private String titre;
+    @JoinColumn(name = "idAuteur")
+    @ManyToOne
+    private Auteurs auteur;
     private String editeur;
-    private String auteur;
-    private int ISBN;
+    private String isbn;
 
     public Livres() {
-
     }
 
-    public Livres(String titre, String editeur, String auteur, int ISBN) {
+    public Livres(String titre, Auteurs auteur, String editeur, String isbn) {
         this.titre = titre;
-        this.editeur = editeur;
         this.auteur = auteur;
-        this.ISBN = ISBN;
+        this.editeur = editeur;
+        this.isbn = isbn;
     }
 
     public String getTitre() {
@@ -26,6 +31,14 @@ public class Livres {
         this.titre = titre;
     }
 
+    public Auteurs getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(Auteurs auteur) {
+        this.auteur = auteur;
+    }
+
     public String getEditeur() {
         return editeur;
     }
@@ -34,29 +47,21 @@ public class Livres {
         this.editeur = editeur;
     }
 
-    public String getAuteur() {
-        return auteur;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-
-    public int getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     @Override
     public String toString() {
-        return "Livres{" +
-                "titre='" + titre + '\'' +
-                ", editeur='" + editeur + '\'' +
+        return "Livre{" +
+                ", titre='" + titre + '\'' +
                 ", auteur='" + auteur + '\'' +
-                ", ISBN=" + ISBN +
+                ", editeur='" + editeur + '\'' +
+                ", isbn='" + isbn + '\'' +
                 '}';
     }
 }
