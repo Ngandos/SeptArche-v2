@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "articles")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Articles {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

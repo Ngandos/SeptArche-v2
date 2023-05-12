@@ -17,6 +17,10 @@ public class Auteurs {
     }
     private String nom;
     public Auteurs() {}
+    public Auteurs(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
     public Auteurs(String nom) {
         this.nom = nom;
     }
