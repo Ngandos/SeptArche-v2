@@ -45,7 +45,7 @@ public class Commande {
     }
     @Override
     public String toString() {
-        return "Commande{" +
-                "id=" + id + ", date_commande=" + date_commande + ", status='" + status + '\'' + ", panier=" + id_panier + '}';
+        return "Commande{" + "id=" + id + ", date_commande=" + date_commande + ", status='" + status + '\'' + ", panier=" + id_panier + '}';
+
     }
 }
