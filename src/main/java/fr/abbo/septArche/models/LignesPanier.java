@@ -46,12 +46,6 @@ public class LignesPanier {
     }
     @Override
     public String toString() {
-        return "LignesPanier{" +
-                "id=" + id +
-                ", article='" + article + '\'' +
-                ", Qte=" + Qte +
-                ", prixUnit=" + prixUnit +
-                ", prixGlob=" + prixGlob +
-                '}';
+        return "LignesPanier{" + "id=" + id + ", article='" + article + '\'' + ", Qte=" + Qte + ", prixUnit=" + prixUnit + ", prixGlob=" + prixGlob + '}';
     }
 }
