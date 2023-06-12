@@ -1,47 +1,26 @@
 package fr.abbo.septArche.models;
 
-import jakarta.persistence.*;
+import fr.abbo.septArche.exceptions.StockExceptions;
+import jakarta.persistence.Embeddable;
 
-@Entity
-@Table(name = "stock")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Embeddable
 public class Stock {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    Long id;
-    String designation;
-    String dispo;
-    public Stock(){}
-    public Stock(Long id, String designation, String dispo) {
-        this.id = id;
-        this.designation = designation;
-        this.dispo = dispo;
+    private int nombre;
+
+    public int getNombre() {
+        return nombre;
     }
-    public Long getId() {
-        return id;
+
+    public void incremente(int ajout) {
+        nombre += ajout;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public void decremente(int ajout) throws StockExceptions {
+        if (ajout <= nombre) {
+            nombre -= ajout;
+        } else {
+            throw new StockExceptions("stock insuffisant");
+        }
     }
-    public String getDesignation() {
-        return designation;
-    }
-    public void setDesignation(String designation) {
-        this.designation = designation;
-    }
-    public String getNbDispo() {
-        return dispo;
-    }
-    public void setDispo(String dispo) {
-        this.dispo = dispo;
-    }
-    @Override
-    public String toString() {
-        return "Stock{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", nbDispo='" + dispo + '\'' +
-                '}';
-    }
+
 }

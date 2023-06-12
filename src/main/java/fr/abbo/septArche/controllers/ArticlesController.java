@@ -15,19 +15,23 @@ import java.util.Optional;
         @Autowired
         private ArticlesRepository rep;
         @GetMapping()
-        public List<Articles> rechercheTous() {
+        public List<Articles> findAll() {
             return rep.findAll();
         }
+        @GetMapping("/{id}")
+        public Optional<Articles> findById(@PathVariable Long id) {
+            return rep.findById(id);
+        }
         @GetMapping(params = {"ref"})
-        public Articles rechercheParRef(@RequestParam String ref) {
+        public Articles findByRef(@RequestParam String ref) {
             return rep.findByRef(ref);
         }
         @GetMapping(params = {"designation"})
         public Articles rechercheParDesignation(@RequestParam String designation) {
-            return rep.findByDesignationContains(designation);
+            return (Articles) rep.findByDesignationContains(designation);
         }
-        @GetMapping("/{id}")
-        public Optional<Articles> rechercheParRef(@PathVariable Long id) {
-            return rep.findById(id);
+        @GetMapping(params = {"prixMini, prixMaxi"})
+        public List<Articles> findAllBetweenPrix(@RequestParam double prixMini, @RequestParam double prixMaxi){
+            return rep.findAllBetweenPrix(prixMini, prixMaxi);
         }
 }

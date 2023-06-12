@@ -2,6 +2,9 @@ package fr.abbo.septArche.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "commande")
 public class Commande {
@@ -9,6 +12,8 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "commande")
+    private List<LigneCommande> contenu = new ArrayList<>();
     String date_commande;
     String status;
     Long id_panier;
@@ -18,6 +23,11 @@ public class Commande {
         this.date_commande = date_commande;
         this.status = status;
         this.id_panier = id_panier;
+    }
+    public Commande(Articles a, int qte) {
+        LigneCommande lc = new LigneCommande(a,qte);
+        contenu.add(lc);
+        lc.setCommande(this);
     }
     public Long getId() {
         return id;
@@ -45,11 +55,6 @@ public class Commande {
     }
     @Override
     public String toString() {
-        return "Commande{" +
-                "id=" + id +
-                ", date_commande=" + date_commande +
-                ", status='" + status + '\'' +
-                ", panier=" + id_panier +
-                '}';
+        return "Commande{" + "id=" + id + ", date_commande=" + date_commande + ", status='" + status + '\'' + ", panier=" + id_panier + '}';
     }
 }

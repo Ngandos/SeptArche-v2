@@ -10,53 +10,38 @@ public class Articles {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column(name = "reference", nullable =  false, length = 30, unique = true)
+    private String ref;
+    private String designation;
     private String category;
     private double prixHT;
     private double tva = 0.2;
-    private int prixTTC;
-    private String ref;
-    private String designation;
+
+    // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
+    })
+    private Stock stock;
+    @ManyToOne()
+    @JoinColumn(name = "vendeur_id")
+    private Vendeur vendeur;
 
     protected Articles(){}
 
-    public Articles(Long id, String category, double prixHT, double tva, int prixTTC, String ref, String designation) {
+    public Articles(Long id, String category, double prixHT, String ref, String designation) {
         this.id = id;
-        this.category = category;
-        this.prixHT = prixHT;
-        this.tva = tva;
-        this.prixTTC = prixTTC;
         this.ref = ref;
         this.designation = designation;
+        this.category = category;
+        this.prixHT = prixHT;
+        this.stock = new Stock();
     }
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public double getPrixHT() {
-        return prixHT;
-    }
-    public void setPrixHT(double prixHT) {
-        this.prixHT = prixHT;
-    }
-    public double getTva() {
-        return tva;
-    }
-    public void setTva(double tva) {
-        this.tva = tva;
-    }
-    public int getPrixTTC() {
-        return prixTTC;
-    }
-    public void setPrixTTC(int prixTTC) {
-        this.prixTTC = prixTTC;
     }
     public String getRef() {
         return ref;
@@ -70,16 +55,37 @@ public class Articles {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
+    public Stock getStock() {
+        return stock;
+    }
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    public double getPrixHT() {
+        return prixHT;
+    }
+    public void setPrixHT(double prixHT) {
+        this.prixHT = prixHT;
+    }
+    public double getPrixTTC() { return prixHT*(1+tva); }
+
+    public double getTva() { return tva; }
+    public void setTva(double tva) { this.tva = tva; }
+    public Vendeur getVendeur() {
+        return vendeur;
+    }
+    public void setVendeur(Vendeur vendeur) {
+        this.vendeur = vendeur;
+    }
     @Override
     public String toString() {
-        return "Articles{" +
-                "id=" + id +
-                ", category='" + category + '\'' +
-                ", prixHT=" + prixHT +
-                ", tva=" + tva +
-                ", prixTTC=" + prixTTC +
-                ", ref='" + ref + '\'' +
-                ", designation='" + designation + '\'' +
-                '}';
+        return "Articles{" + "id=" + id + ", ref='" + ref + '\'' + ", designation='" + designation + '\'' + ", category='" + category + '\'' + ", prixHT=" + prixHT +
+                ", tva=" + tva + ", stock=" + stock + ", vendeur=" + vendeur + '}';
     }
 }
