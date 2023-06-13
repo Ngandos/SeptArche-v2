@@ -49,5 +49,9 @@ INSERT INTO Clients (id, nom, prenom, email, id_adresses, num_compte, nb_command
 
 INSERT INTO Commande (id, date_commande, status, id_panier) VALUES (1,'27/02/2023', 'Terminée', 1);
 
+-- Persistaence commande Included Objects
+
+
+
 
 
