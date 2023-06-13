@@ -45,9 +45,9 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 INSERT INTO Clients (id, nom, prenom, email, id_adresses, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', 'nzola@ngando.fr', 1, '200518NA', 20);
 
--- Persistance Commandes
+-- Persistance Commands Embedded Objects
 
-INSERT INTO Commande (id, date_commande, status, id_panier) VALUES (1,'27/02/2023', 'Terminée', 1);
+
 
 
 

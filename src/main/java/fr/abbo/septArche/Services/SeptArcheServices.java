@@ -31,8 +31,8 @@ public class SeptArcheServices {
         return repArticle.findAllBetweenPrix(prixMini,prixMaxi);
     }
     @Transactional(rollbackFor = StockExceptions.class)
-    public void creeCommande(Articles a, int qte) throws StockExceptions {
-        Commande c = new Commande(a,qte);
+    public void creeCommande(Long id, String date_commande, String status, Articles a, int qte) throws StockExceptions {
+        Commande c = new Commande();
         repCommande.save(c);
         try {
             a.getStock().decremente(qte);
