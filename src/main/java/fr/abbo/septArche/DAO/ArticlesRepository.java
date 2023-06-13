@@ -15,11 +15,7 @@ public interface ArticlesRepository extends JpaRepository<Articles,Long> {
     Articles findByRef(String ref);
     @Override
     Articles getReferenceById(Long id);
-<<<<<<< Updated upstream
     List<Articles> findByDesignationContains(String texte);
-=======
-    Articles findByDesignationContains(String texte);
->>>>>>> Stashed changes
     @Query("SELECT a FROM Article a WHERE a.prixHT > ?1 and a.prixHT < ?2")
     List<Articles> findAllBetweenPrix(double prixMini, double prixMaxi);
 }
