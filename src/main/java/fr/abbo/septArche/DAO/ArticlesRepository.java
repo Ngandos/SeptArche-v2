@@ -16,6 +16,6 @@ public interface ArticlesRepository extends JpaRepository<Articles,Long> {
     @Override
     Articles getReferenceById(Long id);
     List<Articles> findByDesignationContains(String texte);
-    @Query("SELECT a FROM Article a WHERE a.prixHT > ?1 and a.prixHT < ?2")
+    @Query("SELECT a FROM Articles a WHERE a.prixHT > ?1 and a.prixHT < ?2")
     List<Articles> findAllBetweenPrix(double prixMini, double prixMaxi);
 }

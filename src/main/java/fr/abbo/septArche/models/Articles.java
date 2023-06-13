@@ -17,6 +17,8 @@ public class Articles {
     private double prixHT;
     private double tva = 0.2;
 
+
+
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
     @AttributeOverrides({
