@@ -10,14 +10,13 @@ public class Articles {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @Column(name = "reference", nullable =  false, length = 30, unique = true)
+    @Column(name = "ref", nullable =  false, length = 30, unique = true)
     private String ref;
     private String designation;
     private String category;
     private double prixHT;
     private double tva = 0.2;
-
-
+    private double ttc = prixHT * tva;
 
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
@@ -31,13 +30,14 @@ public class Articles {
 
     protected Articles(){}
 
-    public Articles(Long id, String category, double prixHT, String ref, String designation) {
+    public Articles(Long id, String category, double prixHT, String ref, String designation, double ttc) {
         this.id = id;
         this.ref = ref;
         this.designation = designation;
         this.category = category;
         this.prixHT = prixHT;
         this.stock = new Stock();
+        this.ttc = ttc;
     }
     public Long getId() {
         return id;
@@ -85,9 +85,22 @@ public class Articles {
     public void setVendeur(Vendeur vendeur) {
         this.vendeur = vendeur;
     }
+
+    public double getTtc() {
+        return ttc;
+    }
     @Override
     public String toString() {
-        return "Articles{" + "id=" + id + ", ref='" + ref + '\'' + ", designation='" + designation + '\'' + ", category='" + category + '\'' + ", prixHT=" + prixHT +
-                ", tva=" + tva + ", stock=" + stock + ", vendeur=" + vendeur + '}';
+        return "Articles{" +
+                "id=" + id +
+                ", ref='" + ref + '\'' +
+                ", designation='" + designation + '\'' +
+                ", category='" + category + '\'' +
+                ", prixHT=" + prixHT +
+                ", tva=" + tva +
+                ", ttc=" + ttc +
+                ", stock=" + stock +
+                ", vendeur=" + vendeur +
+                '}';
     }
 }
