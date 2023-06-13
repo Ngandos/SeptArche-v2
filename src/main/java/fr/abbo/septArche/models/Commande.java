@@ -17,10 +17,14 @@ public class Commande {
     String date_commande;
     String status;
     public Commande(){}
-    public Commande(Long id, String date_commande, String status, Articles a, int qte) {
+    public Commande(Long id, String date_commande, String status) {
         this.id = id;
         this.date_commande = date_commande;
         this.status = status;
+
+    }
+
+    public void ajoutLigneCommande(Articles a, int qte) {
         LigneCommande lc = new LigneCommande(a, qte);
         contenu.add(lc);
         lc.setCommande(this);

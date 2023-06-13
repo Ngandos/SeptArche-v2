@@ -10,13 +10,12 @@ public class LigneCommande {
     @Column(name = "id", nullable = false)
     private Long id;
     @ManyToOne
-    @JoinColumn(name="artilce_id")
+    @JoinColumn(name="article_id")
     private Articles articles;
     private int quantite;
     @ManyToOne
-    @JoinColumn(name="commande_id")
+    @JoinColumn(name = "commande_id")
     private Commande commande;
-
     public LigneCommande(){}
 
     public LigneCommande(Articles articles, int quantite) {
@@ -41,10 +40,16 @@ public class LigneCommande {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
-    public Commande getCommande() {
-        return commande;
+    public void setCommande(Commande commande) {
+        this.commande = commande;
     }
-    public void setCommande(Commande c) {
-        this.commande = c;
+
+    @Override
+    public String toString() {
+        return "LigneCommande{" +
+                "id=" + id +
+                ", articles=" + articles +
+                ", quantite=" + quantite +
+                '}';
     }
 }

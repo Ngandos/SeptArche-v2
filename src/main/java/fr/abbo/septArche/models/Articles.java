@@ -16,7 +16,8 @@ public class Articles {
     private String category;
     private double prixHT;
     private double tva = 0.2;
-    private double ttc = prixHT * tva;
+    @Transient
+    private double ttc = prixHT * (1 + tva);
 
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
