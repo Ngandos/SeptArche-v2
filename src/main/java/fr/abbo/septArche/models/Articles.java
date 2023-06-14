@@ -17,7 +17,7 @@ public class Articles {
     private double prixHT;
     private double tva = 0.2;
     @Transient
-    private double ttc = prixHT * (1 + tva);
+    private double prixTTC = prixHT * (1 + tva);
 
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
@@ -31,14 +31,14 @@ public class Articles {
 
     protected Articles(){}
 
-    public Articles(Long id, String category, double prixHT, String ref, String designation, double ttc) {
+    public Articles(Long id, String category, double prixHT, String ref, String designation, double prixTTC) {
         this.id = id;
         this.ref = ref;
         this.designation = designation;
         this.category = category;
         this.prixHT = prixHT;
         this.stock = new Stock();
-        this.ttc = ttc;
+        this.prixTTC = prixTTC;
     }
     public Long getId() {
         return id;
@@ -76,32 +76,26 @@ public class Articles {
     public void setPrixHT(double prixHT) {
         this.prixHT = prixHT;
     }
-    public double getPrixTTC() { return prixHT*(1+tva); }
-
-    public double getTva() { return tva; }
-    public void setTva(double tva) { this.tva = tva; }
+    public double getPrixTTC() {
+        return prixHT*(1+tva);
+    }
+    public double getTva() {
+        return tva;
+    }
+    public void setTva(double tva) {
+        this.tva = tva;
+    }
     public Vendeur getVendeur() {
         return vendeur;
     }
     public void setVendeur(Vendeur vendeur) {
         this.vendeur = vendeur;
     }
-
-    public double getTtc() {
-        return ttc;
-    }
     @Override
     public String toString() {
         return "Articles{" +
-                "id=" + id +
-                ", ref='" + ref + '\'' +
-                ", designation='" + designation + '\'' +
-                ", category='" + category + '\'' +
-                ", prixHT=" + prixHT +
-                ", tva=" + tva +
-                ", ttc=" + ttc +
-                ", stock=" + stock +
-                ", vendeur=" + vendeur +
-                '}';
+                "id = " + id + ", ref='" + ref + ", designation='" + designation + ", category='" + category +
+                ", prixHT=" + prixHT + ", tva=" + tva + ", prixTTC = " + prixTTC + ", stock=" + stock +
+                ", vendeur=" + vendeur + '}';
     }
 }
