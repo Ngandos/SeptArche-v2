@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +27,7 @@ public class CommandeServices {
         return repCommande.findById(id);
     }
     @Transactional(rollbackFor = StockExceptions.class)
-    public void creerCommande(Long id, Date date_commande, String status) throws StockExceptions {
-        Commande commande = new Commande();
+    public void creerCommande(Commande commande) throws StockExceptions {
         repCommande.save(commande);
     }
 }
