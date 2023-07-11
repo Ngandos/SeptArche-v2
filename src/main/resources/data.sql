@@ -1,6 +1,9 @@
 --Categories Persistence
 
-INSERT INTO Categorie (id, nom, description) VALUES (1, 'Livres', 'format physique');
+INSERT INTO Categorie (id, nom, description) VALUES (1, 'Livres', 'Litterature');
+INSERT INTO Categorie (id, nom, description) VALUES (2, 'DVD', 'film');
+INSERT INTO Categorie (id, nom, description) VALUES (3, 'CD', 'Bandes Annonce');
+INSERT INTO Categorie (id, nom, description) VALUES (4, 'Goodies', 'Objets & Accessoires');
 
 -- Persistance Auteurs
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 @Repository
-public interface ArticlesRepository extends JpaRepository<Articles,Long> {
+public interface ArticlesRepository extends JpaRepository<Articles, Long> {
     @Override
     List<Articles> findAll();
     Optional<Articles> findById(Long id);

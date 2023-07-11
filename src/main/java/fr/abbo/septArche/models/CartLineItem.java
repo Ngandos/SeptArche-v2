@@ -1,7 +1,7 @@
 package fr.abbo.septArche.models;
 
 public class CartLineItem {
-    private double prixHT;
+    private double prixLineHT;
     private double prixLineTTC;
     private String designation;
     private long qty;
@@ -11,12 +11,17 @@ public class CartLineItem {
         this.prixLineTTC = article.getPrixTTC() * qty;
         this.qty = qty;
     }
-
-    public double getPrixHT() {
-        return prixHT;
+    public double getPrixLineHT() {
+        return prixLineHT;
     }
-    public void setPrixHT(double prixHT) {
-        this.prixHT = prixHT;
+    public void setPrixLineHT(double prixLineHT) {
+        this.prixLineHT = prixLineHT;
+    }
+    public double getPrixLineTTC() {
+        return prixLineTTC;
+    }
+    public void setPrixLineTTC(double prixLineTTC) {
+        this.prixLineTTC = prixLineTTC;
     }
     public String getDesignation() {
         return designation;
@@ -31,5 +36,13 @@ public class CartLineItem {
         this.qty = qty;
     }
 
-
+    @Override
+    public String toString() {
+        return "CartLineItem{" +
+                "prixLineHT=" + prixLineHT +
+                ", prixLineTTC=" + prixLineTTC +
+                ", designation='" + designation + '\'' +
+                ", qty=" + qty +
+                '}';
+    }
 }
