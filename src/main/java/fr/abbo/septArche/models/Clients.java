@@ -9,75 +9,92 @@ public class Clients {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     Long id;
-    String nom;
-    String prenom;
-    String email;
-    Long id_adresses;
-    String num_compte;
-    Long nb_commandes;
+    @ManyToOne
+    @JoinColumn(name="utilisateur_id")
+    private Utilisateur utilisateur;
+    @ManyToOne
+    @JoinColumn(name="adresse_id")
+    private Adresses adresses;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String numCompte;
+    private Long nbCommandes;
 
     public Clients(){}
-    public Clients(Long id, String nom, String prenom, String email, Long ida_dresses, String num_compte, Long nb_commandes) {
+
+    public Clients(Long id, Utilisateur utilisateur, Adresses adresses, String nom, String prenom, String email, String numCompte, Long nbCommandes) {
         this.id = id;
+        this.utilisateur = utilisateur;
+        this.adresses = adresses;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.id_adresses = id_adresses;
-        this.num_compte = num_compte;
-        this.nb_commandes = nb_commandes;
+        this.numCompte = numCompte;
+        this.nbCommandes = nbCommandes;
     }
+
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+    public Adresses getAdresses() {
+        return adresses;
+    }
+    public void setAdresses(Adresses adresses) {
+        this.adresses = adresses;
+    }
     public String getNom() {
         return nom;
     }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
-    public Long getId_adresses() {
-        return id_adresses;
+
+    public String getNumCompte() {
+        return numCompte;
     }
-    public void setId_adresses(Long id_adresses) {
-        this.id_adresses = id_adresses;
+
+    public void setNumCompte(String numCompte) {
+        this.numCompte = numCompte;
     }
-    public String getNum_compte() {
-        return num_compte;
+
+    public Long getNbCommandes() {
+        return nbCommandes;
     }
-    public void setNum_compte(String num_compte) {
-        this.num_compte = num_compte;
+
+    public void setNbCommandes(Long nbCommandes) {
+        this.nbCommandes = nbCommandes;
     }
-    public Long getNb_commandes() {
-        return nb_commandes;
-    }
-    public void setNb_commandes(Long nb_commandes) {
-        this.nb_commandes = nb_commandes;
-    }
+
     @Override
     public String toString() {
-        return "Clients{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", id_adresses=" + id_adresses +
-                ", num_compte='" + num_compte + '\'' +
-                ", nb_commandes=" + nb_commandes +
-                '}';
+        return "Clients{" + "id=" + id + ", utilisateur=" + utilisateur + ", adresses=" + adresses + ", nom='" + nom + '\'' + ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' + ", numCompte='" + numCompte + '\'' + ", nbCommandes=" + nbCommandes + '}';
     }
 }
