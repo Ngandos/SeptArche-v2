@@ -19,6 +19,8 @@ public class Utilisateur {
         return id;
     }
 
+    public Utilisateur() {}
+
     public Utilisateur(long id, String role, String email, String wordPass ) {
         this.id = id;
         this.role = role;
