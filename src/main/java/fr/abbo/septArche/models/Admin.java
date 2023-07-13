@@ -8,16 +8,14 @@ public class Admin {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    private String role;
     @ManyToOne
     @JoinColumn(name="utilisateur_id")
     private Utilisateur utilisateur;
 
     public Admin() {}
 
-    public Admin(long id, String role, Utilisateur utilisateur) {
+    public Admin(long id, Utilisateur utilisateur) {
         this.id = id;
-        this.role = role;
         this.utilisateur = utilisateur;
     }
 
@@ -26,12 +24,6 @@ public class Admin {
     }
     public void setId(Long id) {
         this.id = id;
-    }
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
     }
     public Utilisateur getUtilisateur() {
         return utilisateur;
@@ -42,6 +34,6 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "Admin{" + "id=" + id + ", role='" + role + '\'' + ", utilisateur=" + utilisateur + '}';
+        return "Admin{" + "id=" + id + ", utilisateur=" + utilisateur + '}';
     }
 }

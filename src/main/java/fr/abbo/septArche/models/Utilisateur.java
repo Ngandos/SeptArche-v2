@@ -1,9 +1,6 @@
 package fr.abbo.septArche.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utilisateur")
@@ -15,9 +12,11 @@ public class Utilisateur {
     private String email;
     private String wordPass;
 
-    public Long getId() {
-        return id;
-    }
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "role", column = @Column(name = "role"))
+    })
+    private Stock stock;
 
     public Utilisateur() {}
 

@@ -15,6 +15,10 @@ public class Clients {
     @ManyToOne
     @JoinColumn(name="adresse_id")
     private Adresses adresses;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "role", column = @Column(name = "role"))
+    })
     private String nom;
     private String prenom;
     private String email;
@@ -55,11 +59,9 @@ public class Clients {
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
-
     public String getPrenom() {
         return prenom;
     }
@@ -67,27 +69,21 @@ public class Clients {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getNumCompte() {
         return numCompte;
     }
-
     public void setNumCompte(String numCompte) {
         this.numCompte = numCompte;
     }
-
     public Long getNbCommandes() {
         return nbCommandes;
     }
-
     public void setNbCommandes(Long nbCommandes) {
         this.nbCommandes = nbCommandes;
     }
