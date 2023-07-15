@@ -17,6 +17,7 @@ public class Clients {
     Long nb_commandes;
 
     public Clients(){}
+
     public Clients(Long id, String nom, String prenom, String email, Long ida_dresses, String num_compte, Long nb_commandes) {
         this.id = id;
         this.nom = nom;
@@ -26,6 +27,7 @@ public class Clients {
         this.num_compte = num_compte;
         this.nb_commandes = nb_commandes;
     }
+
     public Long getId() {
         return id;
     }
@@ -68,16 +70,11 @@ public class Clients {
     public void setNb_commandes(Long nb_commandes) {
         this.nb_commandes = nb_commandes;
     }
+
     @Override
     public String toString() {
-        return "Clients{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", id_adresses=" + id_adresses +
-                ", num_compte='" + num_compte + '\'' +
-                ", nb_commandes=" + nb_commandes +
-                '}';
+        return "Clients{" + "id=" + id + ", nom='" + nom + '\'' + ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' + ", id_adresses=" + id_adresses + ", num_compte='" + num_compte + '\'' +
+                ", nb_commandes=" + nb_commandes + '}';
     }
 }

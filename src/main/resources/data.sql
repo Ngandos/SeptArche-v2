@@ -7,7 +7,7 @@ INSERT INTO Categorie (id, nom, description) VALUES (4, 'Goodies', 'Objets & Acc
 
 -- Persistance Auteurs
 
-INSERT INTO auteurs (id, nom) VALUES (1, 'Victor Hugo');
+INSERT INTO Auteurs (id, nom) VALUES (1, 'Victor Hugo');
 INSERT INTO auteurs (id, nom) VALUES (2, 'Charles Baudelaire');
 INSERT INTO auteurs (id, nom) VALUES (3, 'Anne Rice');
 INSERT INTO auteurs (id, nom) VALUES (4, 'Jean Baptiste Poquelin');
@@ -25,10 +25,10 @@ INSERT INTO auteurs (id, nom) VALUES (15, 'Chris Evans');
 
 -- Persistance Editeurs
 
-INSERT INTO editeurs (id, Enseigne) VALUES (1, 'Gallimard');
-INSERT INTO editeurs (id, Enseigne) VALUES (2, 'Livre de poche');
-INSERT INTO editeurs (id, Enseigne) VALUES (3, 'Poche Junior');
-INSERT INTO editeurs (id, Enseigne) VALUES (4, 'J ai lu');
+INSERT INTO editeurs (id, enseigne) VALUES (1, 'Gallimard');
+INSERT INTO editeurs (id, enseigne) VALUES (2, 'Livre de poche');
+INSERT INTO editeurs (id, enseigne) VALUES (3, 'Poche Junior');
+INSERT INTO editeurs (id, enseigne) VALUES (4, 'J ai lu');
 
 -- Persistance d'objets livre en tant que livre et en tant Qu'article
 

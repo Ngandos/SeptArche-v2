@@ -12,32 +12,28 @@ public class Vendeur {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    private String enseigne;
+    private String siret;
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-    private String enseigne;
-    private String siret;
-
     public String getEnseigne() {
         return enseigne;
     }
-
     public void setEnseigne(String enseigne) {
         this.enseigne = enseigne;
     }
-
     public String getSiret() {
         return siret;
     }
-
     public void setSiret(String siret) {
         this.siret = siret;
     }
+
     @Override
     public String toString() {
         return "Vendeur{" +
