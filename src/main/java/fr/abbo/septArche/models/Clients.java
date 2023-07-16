@@ -9,7 +9,7 @@ public class Clients {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     Long id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="utilisateur_id")
     private Utilisateur utilisateur;
     @ManyToOne
