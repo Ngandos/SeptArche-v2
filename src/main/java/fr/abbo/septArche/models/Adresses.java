@@ -9,11 +9,11 @@ public class Adresses {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    Long num_rue;
-    String rue;
-    String codePostal;
-    String ville;
-    String pays;
+    private Long num_rue;
+    private String rue;
+    private String codePostal;
+    private String ville;
+    private String pays;
     public Adresses(){}
     public Adresses(Long id, Long num_rue, String rue, String codePostal, String ville, String pays) {
         this.id = id;
