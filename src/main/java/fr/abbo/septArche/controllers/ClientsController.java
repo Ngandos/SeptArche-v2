@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="/clients")
+@RequestMapping(path="/client")
 public class ClientsController {
     @Autowired
     private ClientsRepository rep;
@@ -18,12 +18,13 @@ public class ClientsController {
     public List<Client> findAll() {
         return rep.findAll();
     }
+    @GetMapping(params = "/{id}")
+    public Optional<Client> findById(@PathVariable Long id) {
+        return rep.findById(id);
+    }
     @GetMapping(params = {"nom"})
     public Client findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);
     }
-    @GetMapping(params = "/{id}")
-    public Optional<Client> findById(@RequestParam Long id) {
-        return rep.findById(id);
-    }
+
 }
