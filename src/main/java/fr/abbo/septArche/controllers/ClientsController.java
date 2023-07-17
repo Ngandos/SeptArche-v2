@@ -1,7 +1,7 @@
 package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.ClientsRepository;
-import fr.abbo.septArche.models.Clients;
+import fr.abbo.septArche.models.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,15 +15,15 @@ public class ClientsController {
     @Autowired
     private ClientsRepository rep;
     @GetMapping()
-    public List<Clients> findAll() {
+    public List<Client> findAll() {
         return rep.findAll();
     }
     @GetMapping(params = {"nom"})
-    public Clients findByNom(@RequestParam String nom) {
+    public Client findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);
     }
     @GetMapping(params = "/{id}")
-    public Optional<Clients> findById(@RequestParam Long id) {
+    public Optional<Client> findById(@RequestParam Long id) {
         return rep.findById(id);
     }
 }

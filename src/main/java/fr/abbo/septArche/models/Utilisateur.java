@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utilisateur")
-@PrimaryKeyJoinColumn(name = "id")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Utilisateur {
     @Id
     @Column(name = "id", nullable = false)

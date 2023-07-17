@@ -1,14 +1,14 @@
 package fr.abbo.septArche.DAO;
 
-import fr.abbo.septArche.models.Clients;
+import fr.abbo.septArche.models.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ClientsRepository extends JpaRepository<Clients, Long> {
+public interface ClientsRepository extends JpaRepository<Client, Long> {
     @Override
-    List<Clients> findAll();
-    Optional<Clients> findById(Long id);
-    Clients findByNom(String nom);
+    List<Client> findAll();
+    Optional<Client> findById(Long id);
+    Client findByNom(String nom);
 }

@@ -2,32 +2,29 @@ package fr.abbo.septArche.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "clients")
+@Table(name = "client")
 @PrimaryKeyJoinColumn(name = "id")
-public class Clients extends Utilisateur {
+public class Client extends Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     Long id;
-    @OneToOne
-    @JoinColumn(name="utilisateur_id")
-    private Utilisateur utilisateur;
-    @ManyToOne
-    @JoinColumn(name="adresses_id")
-    private Adresses adresses;
+    @OneToMany
+    private List<Adresses> adresses = new ArrayList<>();
     private String nom;
     private String prenom;
     private String email;
     private String numCompte;
     private Long nbCommandes;
 
-    public Clients(){}
+    public Client(){}
 
-    public Clients(Long id, Utilisateur utilisateur, Adresses adresses, String nom, String prenom, String email, String numCompte, Long nbCommandes) {
+    public Client(Long id, String nom, String prenom, String email, String numCompte, Long nbCommandes) {
         this.id = id;
-        this.utilisateur = utilisateur;
-        this.adresses = adresses;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -41,17 +38,11 @@ public class Clients extends Utilisateur {
     public void setId(Long id) {
         this.id = id;
     }
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
-    }
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
-    }
-    public Adresses getAdresses() {
+    public List<Adresses> getAdresses() {
         return adresses;
     }
-    public void setAdresses(Adresses adresses) {
-        this.adresses = adresses;
+    public void addAdresse(Adresses adresse) {
+        this.adresses.add(adresse);
     }
     public String getNom() {
         return nom;
@@ -87,7 +78,7 @@ public class Clients extends Utilisateur {
 
     @Override
     public String toString() {
-        return "Clients{" + "id=" + id + ", utilisateur=" + utilisateur + ", adresses=" + adresses + ", nom='" + nom
+        return "Client {" + "id=" + id + ", adresses=" + adresses + ", nom='" + nom
                 + '\'' + ", prenom='" + prenom + '\'' + ", email='" + email + '\'' + ", numCompte='" + numCompte + '\''
                 + ", nbCommandes=" + nbCommandes + '}';
     }
