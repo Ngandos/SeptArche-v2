@@ -9,7 +9,7 @@ public class LigneCommande {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="article_id")
     private Articles article;
     private int quantite;

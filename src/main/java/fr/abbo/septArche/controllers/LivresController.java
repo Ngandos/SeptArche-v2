@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -13,16 +14,20 @@ import java.util.List;
 public class LivresController {
     @Autowired
     private LivresRepository rep;
-   @GetMapping("/{id}")
+   @GetMapping()
     public List<Livres> findAll() {
         return rep.findAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Livres> findById(@PathVariable Long id) {
+        return rep.findById(id);
     }
     @GetMapping(params = {"titre"})
     public Livres findByTitre(@RequestParam String titre) {
         return rep.findByTitre(titre);
     }
     @GetMapping(params = {"auteurs"})
-    public Livres findByAuteur(@RequestParam String auteur) {
+    public Livres findByAuteurs(@RequestParam String auteur) {
         return rep.findByAuteur(auteur);
     }
     @GetMapping(params = {"editeurs"})
