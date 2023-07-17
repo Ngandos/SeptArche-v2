@@ -9,15 +9,13 @@ public class Admin extends Utilisateur {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name="utilisateur_id")
-    private Utilisateur utilisateur;
+    private String nivAcces;
 
     public Admin() {}
 
-    public Admin(long id, Utilisateur utilisateur) {
+    public Admin(long id, String nivAcces) {
         this.id = id;
-        this.utilisateur = utilisateur;
+        this.nivAcces = nivAcces;
     }
 
     public Long getId() {
@@ -26,15 +24,18 @@ public class Admin extends Utilisateur {
     public void setId(Long id) {
         this.id = id;
     }
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public String getNivAcces() {
+        return nivAcces;
     }
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setNivAcces(String nivAcces) {
+        this.nivAcces = nivAcces;
     }
 
     @Override
     public String toString() {
-        return "Admin{" + "id=" + id + ", utilisateur=" + utilisateur + '}';
+        return "Admin{" +
+                "id=" + id +
+                ", nivAcces='" + nivAcces + '\'' +
+                '}';
     }
 }
