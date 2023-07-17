@@ -72,9 +72,11 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runn
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
 
--- Persistance Clients en Base
+-- Persistance Clients Utilisateurs en Base
 
-INSERT INTO Clients (id, nom, prenom, email, adresses_id, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', 'nzola@ngando.fr', 1, '200518NA', 20);
+--INSERT INTO Utilisateur (id, isAdmin,  pseudo, email) VALUES (1, false, 'Nguma', 'nzola@ngando.fr');
+
+--INSERT INTO Clients (id, utilisateur_id, nom, prenom, email, adresses_id, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', 'nzola@ngando.fr', 1, '200518NA', 20);
 
 -- Persistance Commands Embedded Objects
 

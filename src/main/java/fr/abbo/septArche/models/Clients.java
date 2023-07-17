@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "clients")
-public class Clients {
+@PrimaryKeyJoinColumn(name = "id")
+public class Clients extends Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -86,7 +87,8 @@ public class Clients {
 
     @Override
     public String toString() {
-        return "Clients{" + "id=" + id + ", utilisateur=" + utilisateur + ", adresses=" + adresses + ", nom='" + nom + '\'' + ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' + ", numCompte='" + numCompte + '\'' + ", nbCommandes=" + nbCommandes + '}';
+        return "Clients{" + "id=" + id + ", utilisateur=" + utilisateur + ", adresses=" + adresses + ", nom='" + nom
+                + '\'' + ", prenom='" + prenom + '\'' + ", email='" + email + '\'' + ", numCompte='" + numCompte + '\''
+                + ", nbCommandes=" + nbCommandes + '}';
     }
 }

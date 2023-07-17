@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utilisateur")
+@PrimaryKeyJoinColumn(name = "id")
 public class Utilisateur {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    private boolean isAdmin = false;
+    private boolean isAdmin;
     private String pseudo;
     private String email;
 
@@ -34,7 +35,7 @@ public class Utilisateur {
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = false;
+        isAdmin = admin;
     }
 
     public String getPseudo() {

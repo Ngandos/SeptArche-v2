@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ClientsRepository extends JpaRepository<Clients, Long> {
+    @Override
     List<Clients> findAll();
     Optional<Clients> findById(Long id);
     Clients findByNom(String nom);

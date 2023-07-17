@@ -3,12 +3,14 @@ package fr.abbo.septArche.controllers;
 import fr.abbo.septArche.DAO.ClientsRepository;
 import fr.abbo.septArche.models.Clients;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
+@RestController
+@RequestMapping(path="/clients")
 public class ClientsController {
     @Autowired
     private ClientsRepository rep;
