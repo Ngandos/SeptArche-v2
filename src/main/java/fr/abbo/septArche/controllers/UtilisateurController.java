@@ -23,12 +23,12 @@ public class UtilisateurController {
     public Optional<Utilisateur> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
+    @GetMapping({"pseudo"})
+    public Utilisateur findByPseudo(@RequestParam String pseudo) {
+        return rep.findByPseudo(pseudo);
+    }
     @GetMapping({"email"})
     public Utilisateur findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
-    }
-    @GetMapping({"role"})
-    public Utilisateur findByRole(@RequestParam String role) {
-        return rep.findByRole(role);
     }
 }

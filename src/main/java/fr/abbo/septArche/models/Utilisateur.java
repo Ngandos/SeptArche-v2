@@ -8,48 +8,58 @@ public class Utilisateur {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride( name = "role", column = @Column(name = "nivAcc"))
-    })
-    private String role;
+    private boolean isAdmin = false;
+    private String pseudo;
     private String email;
-    private String wordPass;
 
     public Utilisateur() {}
 
-    public Utilisateur(Long id, String role, String email, String wordPass ) {
+    public Utilisateur(Long id, boolean isAdmin, String pseudo, String email) {
         this.id = id;
-        this.role = role;
+        this.isAdmin = isAdmin;
+        this.pseudo = pseudo;
         this.email = email;
-        this.wordPass = wordPass;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-    public String getRole() {
-        return role;
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
-    public void setRole(String role) {
-        this.role = role;
+
+    public void setAdmin(boolean admin) {
+        isAdmin = false;
     }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
-    }
-    public String getWordPass() {
-        return wordPass;
-    }
-    public void setWordPass(String wordPass) {
-        this.wordPass = wordPass;
     }
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", role='" + role + '\'' + ", email='" + email + '\'' +
-                ", wordPass='" + wordPass + '\'' + '}';
+        return "Utilisateur{" +
+                "id=" + id +
+                ", isAdmin=" + isAdmin +
+                ", pseudo='" + pseudo + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

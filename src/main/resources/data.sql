@@ -74,7 +74,7 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistance Clients en Base
 
-INSERT INTO Clients (id, nom, prenom, email, id_adresses, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', 'nzola@ngando.fr', 1, '200518NA', 20);
+INSERT INTO Clients (id, nom, prenom, email, adresses_id, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', 'nzola@ngando.fr', 1, '200518NA', 20);
 
 -- Persistance Commands Embedded Objects
 

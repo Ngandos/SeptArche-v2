@@ -13,12 +13,8 @@ public class Clients {
     @JoinColumn(name="utilisateur_id")
     private Utilisateur utilisateur;
     @ManyToOne
-    @JoinColumn(name="adresse_id")
+    @JoinColumn(name="adresses_id")
     private Adresses adresses;
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride( name = "role", column = @Column(name = "role"))
-    })
     private String nom;
     private String prenom;
     private String email;
