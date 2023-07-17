@@ -11,6 +11,7 @@ public class CartLineItem {
         this.prixLineTTC = article.getPrixTTC() * qty;
         this.qty = qty;
     }
+
     public double getPrixLineHT() {
         return prixLineHT;
     }
