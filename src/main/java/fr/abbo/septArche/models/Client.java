@@ -12,22 +12,20 @@ public class Client extends Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    Long id;
+    private Long id;
     @OneToMany
     private List<Adresses> adresses = new ArrayList<>();
     private String nom;
     private String prenom;
-    private String email;
     private String numCompte;
     private Long nbCommandes;
 
     public Client(){}
 
-    public Client(Long id, String nom, String prenom, String email, String numCompte, Long nbCommandes) {
+    public Client(Long id, String nom, String prenom, String numCompte, Long nbCommandes) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.email = email;
         this.numCompte = numCompte;
         this.nbCommandes = nbCommandes;
     }
@@ -57,12 +55,6 @@ public class Client extends Utilisateur {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
     public String getNumCompte() {
         return numCompte;
     }
@@ -79,7 +71,7 @@ public class Client extends Utilisateur {
     @Override
     public String toString() {
         return "Client {" + "id=" + id + ", adresses=" + adresses + ", nom='" + nom
-                + '\'' + ", prenom='" + prenom + '\'' + ", email='" + email + '\'' + ", numCompte='" + numCompte + '\''
+                + '\'' + ", prenom='" + prenom + '\'' + ", numCompte='" + numCompte + '\''
                 + ", nbCommandes=" + nbCommandes + '}';
     }
 }
