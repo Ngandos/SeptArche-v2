@@ -10,24 +10,24 @@ import java.util.List;
 import java.util.Optional;
 @CrossOrigin
 @RestController
-@RequestMapping("/Commande")
+@RequestMapping("/commande")
 public class CommandeController {
     @Autowired
     private CommandeRepository rep;
     @Autowired
     private CommandeServices repCommandeServices;
 
-    @GetMapping("/commande")
-    public List<Commande> findAll(@RequestParam Long id) {
-        return repCommandeServices.findAll(id);
+    @GetMapping()
+    public List<Commande> findAll() {
+        return repCommandeServices.findAll();
     }
-    @GetMapping(params = "/{id}")
-    public Optional<Commande> findById(@RequestParam Long id) {
+    @GetMapping(path = "/{id}")
+    public Optional<Commande> findById(@PathVariable Long id) {
         return repCommandeServices.findById(id);
     }
-    @GetMapping(params = {"date_commande"})
-    public Commande findByDate_commande(@RequestParam String date_commande) {
-        return rep.findByDate_commande(date_commande);
+    @GetMapping(params = {"dateCommande"})
+    public Commande findByDateCommande(@RequestParam String dateCommande) {
+        return rep.findByDateCommande(dateCommande);
     }
     /*@PostMapping("/creerCommande")
     public Commande creerCommande(@RequestBody Commande commande) throws Exception {
