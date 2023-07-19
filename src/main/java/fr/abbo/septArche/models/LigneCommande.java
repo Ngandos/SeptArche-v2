@@ -16,6 +16,7 @@ public class LigneCommande {
     @ManyToOne
     @JoinColumn(name = "commande_id")
     private Commande commande;
+
     public LigneCommande(){}
 
     public LigneCommande(Articles article, int quantite) {
