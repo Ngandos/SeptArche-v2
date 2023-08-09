@@ -27,7 +27,7 @@ public class LivresController {
         return rep.findByTitre(titre);
     }
     @GetMapping(params = {"auteurs"})
-    public Livres findByAuteurs(@RequestParam String auteur) {
+    public Livres findByAuteur(@RequestParam String auteur) {
         return rep.findByAuteur(auteur);
     }
     @GetMapping(params = {"editeurs"})
