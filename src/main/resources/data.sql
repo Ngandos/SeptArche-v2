@@ -71,6 +71,11 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runn
 -- Persistence Adresses Clients
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
+INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (2, 20, 'Rue Saint Maurice', '80000', 'Amiens', 'France');
+INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (3, 32, 'Allée du bois Saint Clair', '14140', 'Goustranville', 'France');
+INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (4, 42, 'Rue des Polonais', '80120', 'Abbeville', 'France');
+INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (5, 6, 'Rue des Favorites', '75015', 'Paris', 'France');
+
 
 -- Persistance Clients Utilisateurs en Base
 
