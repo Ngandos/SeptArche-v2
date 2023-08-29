@@ -1,11 +1,11 @@
---Categories Persistence
+--Categories Persistence................................................................................................
 
 INSERT INTO Categorie (id, nom, description) VALUES (1, 'Livres', 'Litterature');
 INSERT INTO Categorie (id, nom, description) VALUES (2, 'DVD', 'film');
 INSERT INTO Categorie (id, nom, description) VALUES (3, 'CD', 'Bandes Annonce');
 INSERT INTO Categorie (id, nom, description) VALUES (4, 'Goodies', 'Objets & Accessoires');
 
--- Persistance Auteurs
+-- Persistance Auteurs..................................................................................................
 
 INSERT INTO Auteurs (id, nom) VALUES (1, 'Victor Hugo');
 INSERT INTO auteurs (id, nom) VALUES (2, 'Charles Baudelaire');
@@ -23,14 +23,14 @@ INSERT INTO auteurs (id, nom) VALUES (13, 'Steves Kloves');
 INSERT INTO auteurs (id, nom) VALUES (14, 'Tite Kubo');
 INSERT INTO auteurs (id, nom) VALUES (15, 'Chris Evans');
 
--- Persistance Editeurs
+-- Persistance Editeurs.................................................................................................
 
 INSERT INTO editeurs (id, enseigne) VALUES (1, 'Gallimard');
 INSERT INTO editeurs (id, enseigne) VALUES (2, 'Livre de poche');
 INSERT INTO editeurs (id, enseigne) VALUES (3, 'Poche Junior');
 INSERT INTO editeurs (id, enseigne) VALUES (4, 'J ai lu');
 
--- Persistance d'objets livre en tant que livre et en tant Qu'article
+-- Persistance d'objets livre en tant que livre et en tant Qu'article...................................................
 
 INSERT INTO articles (id, category, prixHT, tva, ref, designation, stock) VALUES (7, 'Livres', 23.56, 0.2, 192021, 'Les miserables', 200);
 INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (7, 'Les miserables', 'Gallimard', '1576VH', 1);
@@ -68,7 +68,7 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (17, 'Harry Pott
 INSERT INTO articles (id, category, prixHT, tva, ref, designation, stock) VALUES (18, 'Livres', 28, 0.2, '161719', 'Blade Runner', 70);
 INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runner', 'J ai lu', '3154PKD', 12);
 
--- Persistence Adresses Clients
+-- Persistence Adresses Clients.........................................................................................
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
 
@@ -86,7 +86,7 @@ INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (5, 'Balum
 INSERT INTO Utilisateur (id, is_admin,  pseudo, email) VALUES (7, false, 'Aigle', 'Ipupa@tokosss.fr');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (7, 'Ipupa', 'Fally Nsimba', '19760410FI', 53);
 
--- Persistance Admins Utilisateurs en Base
+-- Persistance Admins Utilisateurs en Base..............................................................................
 
 INSERT INTO Utilisateur (id, is_admin,  pseudo, email) VALUES (2, true, 'GegorMan', 'gegor@man.fr');
 INSERT INTO Admin (id, niv_Acces) VALUES (2, 'Super Admin');
@@ -100,9 +100,9 @@ INSERT INTO Admin (id, niv_Acces) VALUES (6, 'Admin');
 INSERT INTO Utilisateur (id, is_admin,  pseudo, email) VALUES (8, true, 'Likoko', 'mokokoli@gmail.fr');
 INSERT INTO Admin (id, niv_Acces) VALUES (8, 'Admin');
 
--- Persistance Commands Embedded Objects
+-- Persistance Commands Embedded Objects................................................................................
 
-INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
+INSERT INTO Commande (id, id_client, date_commande, status ) VALUES (1, 1, '2023-07-19', 'Términée');
 
 -- Persistance LigneCommands Embedded Objects
 

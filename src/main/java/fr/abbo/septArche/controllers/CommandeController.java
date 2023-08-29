@@ -1,5 +1,6 @@
 package fr.abbo.septArche.controllers;
 
+import fr.abbo.septArche.DAO.ClientsRepository;
 import fr.abbo.septArche.DAO.CommandeRepository;
 import fr.abbo.septArche.Services.CommandeServices;
 import fr.abbo.septArche.models.Commande;
@@ -14,6 +15,8 @@ import java.util.Optional;
 public class CommandeController {
     @Autowired
     private CommandeRepository rep;
+    @Autowired
+    private ClientsRepository repClient;
     @Autowired
     private CommandeServices repCommandeServices;
 

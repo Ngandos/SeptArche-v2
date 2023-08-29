@@ -20,15 +20,12 @@ public class CommandeServices {
     private LigneCommandeServices repLigneCommande;
     @Autowired
     private CommandeRepository repCommande;
-
     public List<Commande> findAll() {
         return repCommande.findAll();
     }
-
     public Optional<Commande> findById(Long id) {
         return repCommande.findById(id);
     }
-
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerCommande(Commande commande) throws StockExceptions {
         repCommande.save(commande);
