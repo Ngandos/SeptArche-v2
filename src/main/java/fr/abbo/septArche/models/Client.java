@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "id")
-public class Client extends Utilisateur {
+public class Client extends User     {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -51,7 +51,6 @@ public class Client extends Utilisateur {
     public String getPrenom() {
         return prenom;
     }
-
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
