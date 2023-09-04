@@ -26,40 +26,46 @@ public class SecurityConfig {
     /*@Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("user")
-                .password(passwordEncoder.encode("password"))
-                .roles("USER")
-                .build();
+            .password(passwordEncoder.encode("password"))
+            .roles("USER")
+            .build();
 
         UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("USER", "ADMIN")
-                .build();
+            .password(passwordEncoder.encode("admin"))
+            .roles("USER", "ADMIN")
+            .build();
 
         return new InMemoryUserDetailsManager(user, admin);
     }*/
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // csrf : cross site request forgery : système d'attaque quand on est authentifié et que
-        // l'authentification est conservée
-        // par défaut Spring met en place des tockens csrf
-        // je retire la protection pour faire fonctionner mes essais avec postman, mais à remettre ensuite !
+
+    // csrf : cross site request forgery : système d'attaque quand on est authentifié et que
+    // l'authentification est conservée
+    // par défaut Spring met en place des tockens csrf
+    // je retire la protection pour faire fonctionner mes essais avec postman, mais à remettre ensuite !
+
         http.csrf().disable();
-        // Spring security by default protects every endpoint.
-        // However, this would cause CORS errors since a browser’s OPTIONS preflight requests would be blocked.
-        // To make Spring Security bypass preflight requests we need to add http.cors()
+
+    // Spring security by default protects every endpoint.
+    // However, this would cause CORS errors since a browser’s OPTIONS preflight requests would be blocked.
+    // To make Spring Security bypass preflight requests we need to add http.cors()
+
         http.cors();
-        //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-        /* version avec basic auth */
+
+    //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+    /* version avec basic auth */
+
         http
-                .authorizeHttpRequests(
-                        (authorize) -> authorize
-                                .requestMatchers("/articles/**").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
-                                .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
-                                .anyRequest().denyAll()
-                )
-                .httpBasic(Customizer.withDefaults());
+            .authorizeHttpRequests(
+                (authorize) -> authorize
+                    .requestMatchers("/articles/**").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
+                    .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
+                    .anyRequest().denyAll()
+            )
+            .httpBasic(Customizer.withDefaults());
         return http.build();
 
     }
@@ -69,4 +75,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
     }
 }
-}
+
