@@ -10,7 +10,7 @@ import java.util.Optional;
 
     @CrossOrigin
     @RestController
-    @RequestMapping(path="/articles")
+    @RequestMapping("/articles")
     public class ArticlesController {
         @Autowired
         private ArticlesRepository rep;
@@ -22,16 +22,16 @@ import java.util.Optional;
         public Optional<Articles> findById(@PathVariable Long id) {
             return rep.findById(id);
         }
-        @GetMapping(params = {"ref"})
+        @GetMapping("/ref")
         public Articles findByRef(@RequestParam String ref) {
             return rep.findByRef(ref);
         }
-        @GetMapping(params = {"designation"})
+        /*@GetMapping("/search/designation")
         public Articles rechercheParDesignation(@RequestParam String designation) {
             return (Articles) rep.findByDesignationContains(designation);
-        }
-        @GetMapping(params = {"prixMini, prixMaxi"})
+        }*/
+        /*@GetMapping(params = {"prixMini, prixMaxi"})
         public List<Articles> findAllBetweenPrix(@RequestParam double prixMini, @RequestParam double prixMaxi){
             return rep.findAllBetweenPrix(prixMini, prixMaxi);
-        }
+        }*/
 }
