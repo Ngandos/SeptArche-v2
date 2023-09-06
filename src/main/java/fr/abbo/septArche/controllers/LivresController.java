@@ -22,7 +22,7 @@ public class LivresController {
     public Optional<Livres> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
-    @GetMapping(params = {"titre"})
+    @GetMapping(value="search",params = {"titre"})
     public Livres findByTitre(@RequestParam String titre) {
         return rep.findByTitre(titre);
     }

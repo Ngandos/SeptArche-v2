@@ -12,9 +12,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Override
     List<User> findAll();
     Optional<User> findById(Long id);
-    User findByPseudo(String pseudo);
     User findByEmail(String email);
+    User findByUsername(String username);
 
-    /*@Query("SELECT * FROM Utilisateur u WHERE u.isAdmin  = true")
-    public Iterable<Utilisateur> findAllEnabled();*/
+    /*@Query("SELECT * FROM User u WHERE role  = Admin")
+    public Iterable<User> findAllEnabled();*/
 }

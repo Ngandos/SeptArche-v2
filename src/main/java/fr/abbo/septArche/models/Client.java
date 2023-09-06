@@ -18,16 +18,14 @@ public class Client extends User {
     private String nom;
     private String prenom;
     private String numCompte;
-    private Long nbCommandes;
 
     public Client(){}
 
-    public Client(Long id, String nom, String prenom, String numCompte, Long nbCommandes) {
+    public Client(Long id, String nom, String prenom, String numCompte) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.numCompte = numCompte;
-        this.nbCommandes = nbCommandes;
     }
 
     public Long getId() {
@@ -61,17 +59,15 @@ public class Client extends User {
     public void setNumCompte(String numCompte) {
         this.numCompte = numCompte;
     }
-    public Long getNbCommandes() {
-        return nbCommandes;
-    }
-    public void setNbCommandes(Long nbCommandes) {
-        this.nbCommandes = nbCommandes;
-    }
 
     @Override
     public String toString() {
-        return "Client {" + "id=" + id + ", adresses=" + adresses + ", nom='" + nom
-                + '\'' + ", prenom='" + prenom + '\'' + ", numCompte='" + numCompte + '\''
-                + ", nbCommandes=" + nbCommandes + '}';
+        return "Client{" +
+                "id=" + id +
+                ", adresses=" + adresses +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", numCompte='" + numCompte + '\'' +
+                '}';
     }
 }

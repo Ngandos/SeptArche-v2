@@ -9,15 +9,15 @@ public class User {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    private String pseudo;
+    private String username;
     private String email;
     private String PassWord;
 
     public User() {}
 
-    public User(Long id, String pseudo, String email, String PassWord) {
+    public User(Long id, String username, String email, String PassWord) {
         this.id = id;
-        this.pseudo = pseudo;
+        this.username = username;
         this.email = email;
         this.PassWord = PassWord;
     }
@@ -31,11 +31,11 @@ public class User {
     }
 
     public String getPseudo() {
-        return pseudo;
+        return username;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
+    public void setPseudo(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -58,7 +58,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", pseudo='" + pseudo + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", PassWord='" + PassWord + '\'' +
                 '}';
