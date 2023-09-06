@@ -10,7 +10,7 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "id")
 public class Client extends Utilisateur {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     @OneToMany

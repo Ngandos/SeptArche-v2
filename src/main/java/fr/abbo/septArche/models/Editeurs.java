@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "editeurs")
 public class Editeurs {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String enseigne;
