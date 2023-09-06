@@ -83,7 +83,6 @@ INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (4, 'Abdou
 INSERT INTO Users (id,  username, email, password) VALUES (5, 'Innoss', 'inoss@molodoi.fr', '9101112');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (5, 'Balumé', 'Innocent', '160486IB', 53);
 
-<<<<<<< HEAD
 INSERT INTO Users (id, username, email, password) VALUES (7, 'Aigle', 'Ipupa@tokosss.fr', '131415');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (7, 'Ipupa', 'Fally Nsimba', '19760410FI', 53);
 
