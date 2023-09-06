@@ -9,7 +9,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Vendeur {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String enseigne;

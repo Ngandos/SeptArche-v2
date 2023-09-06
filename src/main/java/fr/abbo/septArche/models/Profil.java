@@ -13,7 +13,7 @@ public class Profil {
 
     @OneToOne
     @JoinColumn(name="utilisateur_id")
-    private Utilisateur utilisateur;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name="commande_id")
@@ -25,9 +25,9 @@ public class Profil {
 
     public Profil() {}
 
-    public Profil(Long id, Utilisateur utilisateur, Commande commande/*, Cart cart*/) {
+    public Profil(Long id, User user, Commande commande/*, Cart cart*/) {
         this.id = id;
-        this.utilisateur = utilisateur;
+        this.user = user;
         this.commande = commande;
         /*this.cart = cart;*/
     }
@@ -38,11 +38,11 @@ public class Profil {
     public void setId(Long id) {
         this.id = id;
     }
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public User getUtilisateur() {
+        return user;
     }
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setUtilisateur(User user) {
+        this.user = user;
     }
     public Commande getCommande() {
         return commande;
@@ -59,6 +59,6 @@ public class Profil {
 
     @Override
     public String toString() {
-        return "Profil{" + "id=" + id + ", utilisateur=" + utilisateur + ", commande=" + commande + /*", cart=" + cart*/ + '}';
+        return "Profil{" + "id=" + id + ", utilisateur=" + user + ", commande=" + commande + /*", cart=" + cart*/ + '}';
     }
 }

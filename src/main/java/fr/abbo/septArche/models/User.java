@@ -3,23 +3,23 @@ package fr.abbo.septArche.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "utilisateur")
+@Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Utilisateur {
+public class User {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    private boolean isAdmin;
     private String pseudo;
     private String email;
+    private String PassWord;
 
-    public Utilisateur() {}
+    public User() {}
 
-    public Utilisateur(Long id, boolean isAdmin, String pseudo, String email) {
+    public User(Long id, String pseudo, String email, String PassWord) {
         this.id = id;
-        this.isAdmin = isAdmin;
         this.pseudo = pseudo;
         this.email = email;
+        this.PassWord = PassWord;
     }
 
     public Long getId() {
@@ -28,14 +28,6 @@ public class Utilisateur {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
     }
 
     public String getPseudo() {
@@ -54,13 +46,21 @@ public class Utilisateur {
         this.email = email;
     }
 
+    public String getPassWord() {
+        return PassWord;
+    }
+
+    public void setPassWord(String passWord) {
+        PassWord = passWord;
+    }
+
     @Override
     public String toString() {
-        return "Utilisateur{" +
+        return "User{" +
                 "id=" + id +
-                ", isAdmin=" + isAdmin +
                 ", pseudo='" + pseudo + '\'' +
                 ", email='" + email + '\'' +
+                ", PassWord='" + PassWord + '\'' +
                 '}';
     }
 }

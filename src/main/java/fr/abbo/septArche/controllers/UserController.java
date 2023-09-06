@@ -1,7 +1,7 @@
 package fr.abbo.septArche.controllers;
 
-import fr.abbo.septArche.DAO.UtilisateurRepository;
-import fr.abbo.septArche.models.Utilisateur;
+import fr.abbo.septArche.DAO.UserRepository;
+import fr.abbo.septArche.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,24 +11,24 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping(path="/utilisateur")
-public class UtilisateurController {
+public class UserController {
     @Autowired
-    private UtilisateurRepository rep;
+    private UserRepository rep;
 
     @GetMapping()
-    public List<Utilisateur> findAll() {
+    public List<User> findAll() {
         return rep.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<Utilisateur> findById(@PathVariable Long id) {
+    public Optional<User> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
     @GetMapping({"pseudo"})
-    public Utilisateur findByPseudo(@RequestParam String pseudo) {
+    public User findByPseudo(@RequestParam String pseudo) {
         return rep.findByPseudo(pseudo);
     }
     @GetMapping({"email"})
-    public Utilisateur findByEmail(@RequestParam String email) {
+    public User findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
     }
 }

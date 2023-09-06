@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "id")
-public class Client extends Utilisateur {
+public class Client extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
