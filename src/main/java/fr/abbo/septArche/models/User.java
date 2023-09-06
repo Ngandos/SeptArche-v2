@@ -10,18 +10,19 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
     private String username;
     private String email;
-    private String password;
+    private String passWord;
 
     public User() {}
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String passWord) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.passWord = passWord;
     }
 
     public Long getId() {
@@ -43,10 +44,10 @@ public class User {
         this.email = email;
     }
     public String getPassword() {
-        return password;
+        return passWord;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String passWord) {
+        this.passWord = passWord;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", passWord='" + passWord + '\'' +
                 '}';
     }
 }

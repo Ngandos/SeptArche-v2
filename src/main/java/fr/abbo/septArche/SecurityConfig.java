@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // on explique à Spring qu'on accède aux utilisateurs avec JDBC
+    // on explique à Spring qu'on accède aux utilisateurs avec JDBC.....................................................
     @Bean
     public UserDetailsService userDetailsService(DataSource datasource) {
         return new JdbcUserDetailsManager(datasource);
@@ -60,9 +60,9 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(
                 (authorize) -> authorize
-                    .requestMatchers("/articles/**").permitAll()
-                    .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
-                    .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
+                    .requestMatchers("/articles/**").permitAll() //On permet a tout utilisateur de consulter la liste des articles
+                    .requestMatchers(HttpMethod.POST,"/login").hasRole("USER") //Seuls les utilisatueurs enregistrés peuvent se connecter
+                    .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER") // Seuls les utilisateur authentifiés peuvent commander
                     .anyRequest().denyAll()
             )
             .httpBasic(Customizer.withDefaults());
