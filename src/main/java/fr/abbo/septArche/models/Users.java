@@ -4,10 +4,10 @@ package fr.abbo.septArche.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +15,14 @@ public class User {
     private Long id;
     private String username;
     private String email;
-    private String passWord;
+    private String password;
 
-    public User() {}
+    public Users() {}
 
-    public User(String username, String email, String passWord) {
+    public Users(String username, String email, String password) {
         this.username = username;
         this.email = email;
-        this.passWord = passWord;
+        this.password = password;
     }
 
     public Long getId() {
@@ -31,10 +31,10 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
     public String getEmail() {
@@ -44,10 +44,10 @@ public class User {
         this.email = email;
     }
     public String getPassword() {
-        return passWord;
+        return password;
     }
-    public void setPassword(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
