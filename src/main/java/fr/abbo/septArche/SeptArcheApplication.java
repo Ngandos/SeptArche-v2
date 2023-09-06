@@ -19,7 +19,9 @@ public class SeptArcheApplication {
 		SpringApplication.run(SeptArcheApplication.class, args);
 	}
 @Bean
-PasswordEncoder passwordEncoder(){return  new BCryptPasswordEncoder();}
+PasswordEncoder passwordEncoder(){
+		return  new BCryptPasswordEncoder();
+	}
 
 	@Bean
 	CommandLineRunner commandLineRunner(JdbcUserDetailsManager jdbcUserDetailsManager) {
@@ -52,7 +54,6 @@ PasswordEncoder passwordEncoder(){return  new BCryptPasswordEncoder();}
 								.roles("USER","ADMIN")
 								.build()
 				);*/
-
 		};
 
 	}

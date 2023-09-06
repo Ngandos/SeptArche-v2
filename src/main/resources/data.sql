@@ -1,12 +1,10 @@
---Tables pour Spring Security
+--Tables pour Spring Security...........................................................................................
 
 create table authorities (
     username varchar(50) not null,
     authority varchar(50) not null,
     foreign key (username) references users (username)
 );
-
-
 
 --Categories Persistence................................................................................................
 
@@ -84,7 +82,7 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistance Clients Utilisateurs en Base
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234',true);
+INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234', true);
 
 
 --INSERT INTO Users (username, email, password, enabled) VALUES ('Nèh', 'kimia@ngando.fr', '5678', true);

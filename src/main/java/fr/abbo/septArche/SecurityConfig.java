@@ -13,11 +13,15 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
+
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     // on explique à Spring qu'on accède aux utilisateurs avec JDBC.....................................................
+
     @Bean
     public UserDetailsService userDetailsService(DataSource datasource) {
         return new JdbcUserDetailsManager(datasource);
@@ -31,7 +35,9 @@ public class SecurityConfig {
     // par défaut Spring met en place des tockens csrf
     // je retire la protection pour faire fonctionner mes essais avec postman, mais à remettre ensuite !
 
-        http.csrf().disable();
+        http.csrf((protection) -> protection
+                .ignoringRequestMatchers(toH2Console()) // <-
+        );
 
     // Spring security by default protects every endpoint.
     // However, this would cause CORS errors since a browser’s OPTIONS preflight requests would be blocked.
@@ -42,15 +48,16 @@ public class SecurityConfig {
     //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     /* version avec basic auth */
 
-        http
-            .authorizeHttpRequests(
-                (authorize) -> authorize
-                    .requestMatchers("/articles/**").permitAll() //On permet a tout utilisateur de consulter la liste des articles
-                    .requestMatchers(HttpMethod.POST,"/login").hasRole("USER") //Seuls les utilisatueurs enregistrés peuvent se connecter
-                    .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER") // Seuls les utilisateur authentifiés peuvent commander
-                    .anyRequest().denyAll()
-            )
-            .httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests((authorize) -> authorize
+            .requestMatchers(toH2Console()).permitAll()
+            .requestMatchers("/articles/**").permitAll()
+            .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
+            .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
+            .anyRequest().denyAll()
+        )
+
+        .httpBasic(Customizer.withDefaults());
+
         return http.build();
 
     }
