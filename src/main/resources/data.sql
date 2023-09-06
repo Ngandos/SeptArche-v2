@@ -1,3 +1,13 @@
+--Tables pour Spring Security
+
+create table authorities (
+    username varchar(50) not null,
+    authority varchar(50) not null,
+    foreign key (username) references users (username)
+);
+
+
+
 --Categories Persistence................................................................................................
 
 INSERT INTO Categorie (id, nom, description) VALUES (1, 'Livres', 'Litterature');
@@ -74,31 +84,31 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistance Clients Utilisateurs en Base
 
-INSERT INTO Users (id, username, email, password) VALUES (1, 'Nguma', 'nzola@ngando.fr', '1234');
-INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', '200518NA', 20);
+INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234',true);
 
-INSERT INTO Users (id,  username, email, password) VALUES (4, 'Nèh', 'kimia@ngando.fr', '5678');
-INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (4, 'Abdoulaye', 'Kimia', '161221KA', 53);
 
-INSERT INTO Users (id,  username, email, password) VALUES (5, 'Innoss', 'inoss@molodoi.fr', '9101112');
-INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (5, 'Balumé', 'Innocent', '160486IB', 53);
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Nèh', 'kimia@ngando.fr', '5678', true);
 
-INSERT INTO Users (id, username, email, password) VALUES (7, 'Aigle', 'Ipupa@tokosss.fr', '131415');
-INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (7, 'Ipupa', 'Fally Nsimba', '19760410FI', 53);
+
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Innoss', 'inoss@molodoi.fr', '9101112', true);
+
+
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Aigle', 'Ipupa@tokosss.fr', '131415', true);
+
 
 -- Persistance Admins Utilisateurs en Base..............................................................................
 
-INSERT INTO Users (id,  username, email, password) VALUES (2, 'GegorMan', 'gegor@man.fr', '161718');
+--INSERT INTO Users (username, email, password, enabled) VALUES ('GegorMan', 'gegor@man.fr', '161718', true);
 
-INSERT INTO Users (id,  username, email, password) VALUES (3, 'Jeff', 'jloyd.ba@gmail.fr', '192021');
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Jeff', 'jloyd.ba@gmail.fr', '192021', true);
 
-INSERT INTO Users (id,  username, email, password) VALUES (6, 'Ngando', 'ngando.ba@gmail.fr', '222324');
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Ngando', 'ngando.ba@gmail.fr', '222324', true);
 
-INSERT INTO Users (id,  username, email, password) VALUES (8, 'Likoko', 'mokokoli@gmail.fr', '252627');
+--INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
 
 -- Persistance Commands Embedded Objects................................................................................
 
-INSERT INTO Commande (id, id_client, date_commande, status ) VALUES (1, 1, '2023-07-19', 'Términée');
+INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
 
 -- Persistance LigneCommands Embedded Objects
 

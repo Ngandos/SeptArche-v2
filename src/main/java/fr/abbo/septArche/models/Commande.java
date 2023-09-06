@@ -14,9 +14,9 @@ public class Commande {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @JoinColumn(name = "idClient")
+    /*@JoinColumn(name = "idClient")
     @OneToOne()
-    private Client client;
+    private Client client;*/
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "commande")
     private List<LigneCommande> contenu = new ArrayList<>();
     Date dateCommande;
@@ -37,12 +37,12 @@ public class Commande {
     public void setId(Long id) {
         this.id = id;
     }
-    public Client getClient() {
+    /*public Client getClient() {
         return client;
     }
     public void setClient(Client client) {
         this.client = client;
-    }
+    }*/
     public List<LigneCommande> getContenu() {
         return contenu;
     }
@@ -63,7 +63,7 @@ public class Commande {
     }
     @Override
     public String toString() {
-        return "Commande {" + "id =" + id + "Client =" + client +", contenu =" + contenu + ", dateCommande =" + new Date() +
+        return "Commande {" + "id =" + id + ", contenu =" + contenu + ", dateCommande =" + new Date() +
                 ", status =" + status + '}';
     }
 }

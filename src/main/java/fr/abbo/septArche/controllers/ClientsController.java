@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -18,10 +17,7 @@ public class ClientsController {
     public List<Client> findAll() {
         return rep.findAll();
     }
-    @GetMapping(params = "/{id}")
-    public Optional<Client> findById(@PathVariable Long id) {
-        return rep.findById(id);
-    }
+
     @GetMapping(params = {"nom"})
     public Client findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);

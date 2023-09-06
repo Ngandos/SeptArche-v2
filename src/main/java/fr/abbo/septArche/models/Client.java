@@ -9,10 +9,6 @@ import java.util.List;
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "id")
 public class Client extends Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
     @OneToMany
     private List<Adresses> adresses = new ArrayList<>();
     private String nom;
@@ -22,20 +18,14 @@ public class Client extends Users {
 
     public Client(){}
 
-    public Client(Long id, String nom, String prenom, String numCompte, Long nbCommandes) {
-        this.id = id;
+    public Client(String nom, String prenom, String numCompte, Long nbCommandes) {
+
         this.nom = nom;
         this.prenom = prenom;
         this.numCompte = numCompte;
         this.nbCommandes = nbCommandes;
     }
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public List<Adresses> getAdresses() {
         return adresses;
     }
@@ -69,7 +59,7 @@ public class Client extends Users {
 
     @Override
     public String toString() {
-        return "Client {" + "id=" + id + ", adresses=" + adresses + ", nom='" + nom
+        return "Client {adresses=" + adresses + ", nom='" + nom
                 + '\'' + ", prenom='" + prenom + '\'' + ", numCompte='" + numCompte + '\''
                 + ", nbCommandes=" + nbCommandes + '}';
     }
