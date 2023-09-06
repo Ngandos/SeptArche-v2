@@ -33,9 +33,10 @@ public class CommandeController {
         return rep.findByDateCommande(dateCommande);
     }
     @GetMapping(params = {"idClient"})
-    public  Commande findByCommandeClient(@RequestParam Long idClient) {
-        return rep.findByCommandeClient(idClient);
+    public  Commande findCommandeByClient(@RequestParam Long idClient) {
+        return rep.findCommandeByClient(idClient);
     }
+
     /*@PostMapping("/creerCommande")
     public Commande creerCommande(@RequestBody Commande commande) throws Exception {
         return repCommandeServices.creerCommande(commande);

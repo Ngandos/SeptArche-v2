@@ -74,30 +74,30 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistance Clients Utilisateurs en Base
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (1, false, 'Nguma', 'nzola@ngando.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (1, false, 'Nguma', 'nzola@ngando.fr', '1234');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', '200518NA', 20);
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (4, false, 'Nèh', 'kimia@ngando.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (4, false, 'Nèh', 'kimia@ngando.fr', '5678');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (4, 'Abdoulaye', 'Kimia', '161221KA', 53);
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (5, false, 'Innoss', 'inoss@molodoi.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (5, false, 'Innoss', 'inoss@molodoi.fr', '9101112');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (5, 'Balumé', 'Innocent', '160486IB', 53);
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (7, false, 'Aigle', 'Ipupa@tokosss.fr');
+INSERT INTO User (id, username, email, passWord) VALUES (7, false, 'Aigle', 'Ipupa@tokosss.fr', '131415');
 INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (7, 'Ipupa', 'Fally Nsimba', '19760410FI', 53);
 
 -- Persistance Admins Utilisateurs en Base..............................................................................
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (2, true, 'GegorMan', 'gegor@man.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (2, true, 'GegorMan', 'gegor@man.fr', '161718');
 INSERT INTO Admin (id, niv_Acces) VALUES (2, 'Super Admin');
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (3, true, 'Jeff', 'jloyd.ba@gmail.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (3, true, 'Jeff', 'jloyd.ba@gmail.fr', '192021');
 INSERT INTO Admin (id, niv_Acces) VALUES (3, 'Super Admin');
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (6, true, 'Ngando', 'ngando.ba@gmail.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (6, true, 'Ngando', 'ngando.ba@gmail.fr', "222324");
 INSERT INTO Admin (id, niv_Acces) VALUES (6, 'Admin');
 
-INSERT INTO User (id, is_admin,  pseudo, email) VALUES (8, true, 'Likoko', 'mokokoli@gmail.fr');
+INSERT INTO User (id,  username, email, passWord) VALUES (8, true, 'Likoko', 'mokokoli@gmail.fr', "252627");
 INSERT INTO Admin (id, niv_Acces) VALUES (8, 'Admin');
 
 -- Persistance Commands Embedded Objects................................................................................

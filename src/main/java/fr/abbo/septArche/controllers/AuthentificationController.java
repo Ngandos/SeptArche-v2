@@ -12,7 +12,7 @@ public class AuthentificationController {
     @PostMapping()
     public User login(@RequestBody User user) {
         // Si on arrive dans cette méthode c'est qu'on est authentifié (Spring Security nous bloque sinon)
-        System.out.println("login de : " + user.getUsername());
+        System.out.println("login de : " + user.getUserName());
         return user;
         // retourne l'utilisateur connecté pour que React soit au courant que l'authentification est bonne
     }

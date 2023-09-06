@@ -23,9 +23,9 @@ public class UserController {
     public Optional<User> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
-    @GetMapping({"pseudo"})
-    public User findByPseudo(@RequestParam String pseudo) {
-        return rep.findByPseudo(pseudo);
+    @GetMapping({"username"})
+    public User findByUserName(@RequestParam String username) {
+        return rep.findByUsername(username);
     }
     @GetMapping({"email"})
     public User findByEmail(@RequestParam String email) {
