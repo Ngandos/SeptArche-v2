@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -15,6 +17,7 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    private PasswordEncoder passwordEncoder;
 
     // on explique à Spring qu'on accède aux utilisateurs avec JDBC.....................................................
     @Bean
@@ -22,14 +25,19 @@ public class SecurityConfig {
         return new JdbcUserDetailsManager(datasource);
     }
 
+    //@Bean
+    PasswordEncoder passwordEncoder() {
+        return  new BCryptPasswordEncoder();
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests((requests) -> requests
-                        // another matchers
-                        .requestMatchers(toH2Console()).permitAll() // <-
-                        // another matchers
-                        .anyRequest().authenticated()
+                    // another matchers
+                    .requestMatchers(toH2Console()).permitAll() // <-
+                    // another matchers
+                    .anyRequest().authenticated()
                 )
                 .formLogin((login) -> login
                         .loginPage("/login")
@@ -48,6 +56,11 @@ public class SecurityConfig {
         return httpSecurity.build();
 
     }
+
+    /*@Bean
+    public PasswordEncoder bcryptEncoder() {
+        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
+    }*/
 
 
     /*@Bean
@@ -82,10 +95,6 @@ public class SecurityConfig {
         return http.build();
 
     }
-
-    @Bean
-    public PasswordEncoder bcryptEncoder() {
-        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
-    }*/
+   */
 }
 

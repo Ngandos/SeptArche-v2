@@ -3,6 +3,8 @@ package fr.abbo.septArche.controllers;
 import fr.abbo.septArche.DAO.UserRepository;
 import fr.abbo.septArche.models.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +25,17 @@ public class UserController {
     public Optional<Users> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
-    @GetMapping({"username"})
+    @GetMapping("/username")
     public Users findByUsername(@RequestParam String username) {
         return rep.findByUsername(username);
     }
-    @GetMapping({"email"})
+    @GetMapping("/email")
     public Users findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
+    }
+    @PostMapping("/save")
+    public ResponseEntity<Users> createUser(@RequestBody Users user) {
+        Users createdUser = rep.save(user);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 }
