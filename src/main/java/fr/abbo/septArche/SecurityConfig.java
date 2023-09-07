@@ -25,7 +25,7 @@ public class SecurityConfig {
         return new JdbcUserDetailsManager(datasource);
     }
 
-    //@Bean
+    @Bean
     PasswordEncoder passwordEncoder() {
         return  new BCryptPasswordEncoder();
     }
@@ -33,25 +33,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeHttpRequests((requests) -> requests
-                    // another matchers
-                    .requestMatchers(toH2Console()).permitAll() // <-
-                    // another matchers
-                    .anyRequest().authenticated()
-                )
-                .formLogin((login) -> login
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout((logout) -> logout
-                        .permitAll()
-                )
-                .csrf((protection) -> protection
-                        .ignoringRequestMatchers(toH2Console()) // <-
-                )
-                .headers((header) -> header
-                        .frameOptions().sameOrigin()
-                );
+            .authorizeHttpRequests((requests) -> requests
+                // another matchers
+                .requestMatchers(toH2Console()).permitAll() // <-
+                // another matchers
+                .anyRequest().authenticated()
+            )
+            .formLogin((login) -> login
+                    .loginPage("/login")
+                    .permitAll()
+            )
+            .logout((logout) -> logout
+                    .permitAll()
+            )
+            .csrf((protection) -> protection
+                    .ignoringRequestMatchers(toH2Console()) // <-
+            )
+            .headers((header) -> header
+                    .frameOptions().sameOrigin()
+            );
 
         return httpSecurity.build();
 

@@ -6,6 +6,9 @@ create table authorities (
     foreign key (username) references users (username)
 );
 
+CREATE UNIQUE INDEX ix_auth_username
+  on authorities (username,authority);
+
 
 
 --Categories Persistence................................................................................................
@@ -82,32 +85,33 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runn
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
 
--- Persistance Clients Utilisateurs en Base
+-- Insertion des utilisateurs dans la table "users"
 
 INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234', 0);
+INSERT INTO authorities (username, authority) VALUES ('Nguma', 'ROLE_ADMIN');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Neh', 'kimia@ngando.fr', '5678', 0);
+INSERT INTO authorities (username, authority) VALUES ('Neh', 'ROLE_ADMIN');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Nèh', 'kimia@ngando.fr', '5678', 0);
-INSERT INTO authorities (username, authority) VALUES ('Néh', 'USER, ADMIN');
+INSERT INTO Users (username, email, password, enabled) VALUES ('Innoss', 'inoss@molodoi.fr', '9101112', true);
+INSERT INTO authorities (username, authority) VALUES ('Innoss', 'ROLE_ADMIN');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Aigle', 'Ipupa@tokosss.fr', '131415', true);
+INSERT INTO authorities (username, authority) VALUES ('Aigle', 'ROLE_ADMIN');
 
---INSERT INTO Users (username, email, password, enabled) VALUES ('Innoss', 'inoss@molodoi.fr', '9101112', true);
+INSERT INTO Users (username, email, password, enabled) VALUES ('GegorMan', 'gegor@man.fr', '161718', true);
+INSERT INTO authorities (username, authority) VALUES ('GegorMan', 'ROLE_ADMIN');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Jeff', 'jloyd.ba@gmail.fr', '192021', true);
+INSERT INTO authorities (username, authority) VALUES ('Jeff', 'ROLE_ADMIN');
 
---INSERT INTO Users (username, email, password, enabled) VALUES ('Aigle', 'Ipupa@tokosss.fr', '131415', true);
+INSERT INTO Users (username, email, password, enabled) VALUES ('Ngando', 'ngando.ba@gmail.fr', '222324', true);
+INSERT INTO authorities (username, authority) VALUES ('Ngando', 'ROLE_ADMIN');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
+INSERT INTO authorities (username, authority) VALUES ('Likoko', 'ROLE_ADMIN');
 
--- Persistance Admins Utilisateurs en Base..............................................................................
-
---INSERT INTO Users (username, email, password, enabled) VALUES ('GegorMan', 'gegor@man.fr', '161718', true);
-
---INSERT INTO Users (username, email, password, enabled) VALUES ('Jeff', 'jloyd.ba@gmail.fr', '192021', true);
-
---INSERT INTO Users (username, email, password, enabled) VALUES ('Ngando', 'ngando.ba@gmail.fr', '222324', true);
-
---INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
-
--- Persistance Commands Embedded Objects................................................................................
+--Persistance Commands Embedded Objects................................................................................
 
 INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
 
