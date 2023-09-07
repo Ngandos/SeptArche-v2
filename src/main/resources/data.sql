@@ -84,7 +84,7 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistance Clients Utilisateurs en Base
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234',true);
+INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234', 1);
 
 
 --INSERT INTO Users (username, email, password, enabled) VALUES ('Nèh', 'kimia@ngando.fr', '5678', true);

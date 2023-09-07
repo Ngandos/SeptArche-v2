@@ -2,13 +2,9 @@ package fr.abbo.septArche;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -27,6 +23,34 @@ public class SecurityConfig {
     }
 
     @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeHttpRequests((requests) -> requests
+                        // another matchers
+                        .requestMatchers(toH2Console()).permitAll() // <-
+                        // another matchers
+                        .anyRequest().authenticated()
+                )
+                .formLogin((login) -> login
+                        .loginPage("/login")
+                        .permitAll()
+                )
+                .logout((logout) -> logout
+                        .permitAll()
+                )
+                .csrf((protection) -> protection
+                        .ignoringRequestMatchers(toH2Console()) // <-
+                )
+                .headers((header) -> header
+                        .frameOptions().sameOrigin()
+                );
+
+        return httpSecurity.build();
+
+    }
+
+
+    /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     // csrf : cross site request forgery : système d'attaque quand on est authentifié et que
@@ -35,7 +59,7 @@ public class SecurityConfig {
     // je retire la protection pour faire fonctionner mes essais avec postman, mais à remettre ensuite !
 
         http.csrf((protection) -> protection
-            .ignoringRequestMatchers(toH2Console()));
+          .ignoringRequestMatchers(toH2Console()));
 
     // Spring security by default protects every endpoint.
     // However, this would cause CORS errors since a browser’s OPTIONS preflight requests would be blocked.
@@ -44,17 +68,17 @@ public class SecurityConfig {
         http.cors();
 
     //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-    /* version avec basic auth */
+    *//* version avec basic auth *//*
 
         http.authorizeHttpRequests(
             (authorize) -> authorize
-                .requestMatchers("/toH2Console/**").permitAll()
-                .requestMatchers("/articles/**").permitAll() //On permet a tout utilisateur de consulter la liste des articles
-                .requestMatchers(HttpMethod.POST,"/login").hasRole("USER") //Seuls les utilisatueurs enregistrés peuvent se connecter
-                .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER") // Seuls les utilisateur authentifiés peuvent commander
-                .anyRequest().denyAll()
+                .requestMatchers(toH2Console()).permitAll()
+                .requestMatchers("/articles/**").permitAll()
+                .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
+                .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
             )
             .httpBasic(Customizer.withDefaults());
+
         return http.build();
 
     }
@@ -62,6 +86,6 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder bcryptEncoder() {
         return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
-    }
+    }*/
 }
 
