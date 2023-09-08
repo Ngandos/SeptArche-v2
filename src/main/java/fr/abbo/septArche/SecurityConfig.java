@@ -2,6 +2,8 @@ package fr.abbo.septArche;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,24 +32,26 @@ public class SecurityConfig {
         return  new BCryptPasswordEncoder();
     }
 
+    /*@Bean
+    public PasswordEncoder bcryptEncoder() {
+        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
+    }*/
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .authorizeHttpRequests((requests) -> requests
                 // another matchers
                 .requestMatchers(toH2Console()).permitAll() // <-
+                .requestMatchers("/articles/**").permitAll()
+                .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
+                .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
                 // another matchers
                 .anyRequest().authenticated()
             )
-            .formLogin((login) -> login
-                    .loginPage("/login")
-                    .permitAll()
-            )
-            .logout((logout) -> logout
-                    .permitAll()
-            )
-            .csrf((protection) -> protection
-                    .ignoringRequestMatchers(toH2Console()) // <-
+                .httpBasic(Customizer.withDefaults())
+                .csrf((protection) -> protection
+                .ignoringRequestMatchers(toH2Console()) // <-
             )
             .headers((header) -> header
                     .frameOptions().sameOrigin()
@@ -56,11 +60,6 @@ public class SecurityConfig {
         return httpSecurity.build();
 
     }
-
-    /*@Bean
-    public PasswordEncoder bcryptEncoder() {
-        return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
-    }*/
 
 
     /*@Bean
@@ -86,11 +85,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
             (authorize) -> authorize
                 .requestMatchers(toH2Console()).permitAll()
-                .requestMatchers("/articles/**").permitAll()
-                .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
-                .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
+
             )
-            .httpBasic(Customizer.withDefaults());
+
 
         return http.build();
 
