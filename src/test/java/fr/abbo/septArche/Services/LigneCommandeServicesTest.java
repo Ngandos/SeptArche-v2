@@ -1,24 +1,24 @@
 package fr.abbo.septArche.Services;
 
-import org.junit.jupiter.api.Test;
+    import org.junit.jupiter.api.Test;
+    import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+    @SpringBootTest
+    class LigneCommandeServicesTest {
 
-class LigneCommandeServicesTest {
+        @Test
+        void findAll() {
+        }
 
-    @Test
-    void findAll() {
+        @Test
+        void findById() {
+        }
+
+        @Test
+        void findByCommande() {
+        }
+
+        @Test
+        void creerLigneCommande() {
+        }
     }
-
-    @Test
-    void findById() {
-    }
-
-    @Test
-    void findByCommande() {
-    }
-
-    @Test
-    void creerLigneCommande() {
-    }
-}

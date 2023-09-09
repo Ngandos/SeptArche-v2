@@ -7,6 +7,8 @@ import jakarta.persistence.Embeddable;
 public class Stock {
     private int nombre;
 
+    /**Recupere le nombre d'Articles en Stock*/
+
     public int getNombre() {
         return nombre;
     }
@@ -23,7 +25,7 @@ public class Stock {
     /**
      * Décrémente la quantité en stock en retirant une valeur donnée.
      * @param ajout La valeur à retirer de la quantité en stock.
-     * @throws StockExceptions Si la quantité en stock est insuffisante .
+     * @throws StockExceptions Si la quantité en stock est insuffisante.
      */
 
     public void decremente(int ajout) throws StockExceptions {

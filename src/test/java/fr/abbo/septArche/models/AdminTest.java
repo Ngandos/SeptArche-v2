@@ -1,28 +1,28 @@
 package fr.abbo.septArche.models;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+    @SpringBootTest
+    class AdminTest {
 
-class AdminTest {
+        @Test
+        void getId() {
+        }
 
-    @Test
-    void getId() {
+        @Test
+        void setId() {
+        }
+
+        @Test
+        void getUtilisateur() {
+        }
+
+        @Test
+        void setUtilisateur() {
+        }
+
+        @Test
+        void testToString() {
+        }
     }
-
-    @Test
-    void setId() {
-    }
-
-    @Test
-    void getUtilisateur() {
-    }
-
-    @Test
-    void setUtilisateur() {
-    }
-
-    @Test
-    void testToString() {
-    }
-}

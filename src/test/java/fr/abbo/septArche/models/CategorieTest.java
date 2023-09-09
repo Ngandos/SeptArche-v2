@@ -1,36 +1,36 @@
 package fr.abbo.septArche.models;
 
-import org.junit.jupiter.api.Test;
+    import org.junit.jupiter.api.Test;
+    import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+    @SpringBootTest
+    class CategorieTest {
 
-class CategorieTest {
+        @Test
+        void getId() {
+        }
 
-    @Test
-    void getId() {
+        @Test
+        void setId() {
+        }
+
+        @Test
+        void getNom() {
+        }
+
+        @Test
+        void setNom() {
+        }
+
+        @Test
+        void getDescription() {
+        }
+
+        @Test
+        void setDescription() {
+        }
+
+        @Test
+        void testToString() {
+        }
     }
-
-    @Test
-    void setId() {
-    }
-
-    @Test
-    void getNom() {
-    }
-
-    @Test
-    void setNom() {
-    }
-
-    @Test
-    void getDescription() {
-    }
-
-    @Test
-    void setDescription() {
-    }
-
-    @Test
-    void testToString() {
-    }
-}

@@ -1,44 +1,44 @@
 package fr.abbo.septArche.models;
 
-import org.junit.jupiter.api.Test;
+    import org.junit.jupiter.api.Test;
+    import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+    @SpringBootTest
+    class ProfilTest {
 
-class ProfilTest {
+        @Test
+        void getId() {
+        }
 
-    @Test
-    void getId() {
+        @Test
+        void setId() {
+        }
+
+        @Test
+        void getUtilisateur() {
+        }
+
+        @Test
+        void setUtilisateur() {
+        }
+
+        @Test
+        void getCommande() {
+        }
+
+        @Test
+        void setCommande() {
+        }
+
+        @Test
+        void getCart() {
+        }
+
+        @Test
+        void setCart() {
+        }
+
+        @Test
+        void testToString() {
+        }
     }
-
-    @Test
-    void setId() {
-    }
-
-    @Test
-    void getUtilisateur() {
-    }
-
-    @Test
-    void setUtilisateur() {
-    }
-
-    @Test
-    void getCommande() {
-    }
-
-    @Test
-    void setCommande() {
-    }
-
-    @Test
-    void getCart() {
-    }
-
-    @Test
-    void setCart() {
-    }
-
-    @Test
-    void testToString() {
-    }
-}
