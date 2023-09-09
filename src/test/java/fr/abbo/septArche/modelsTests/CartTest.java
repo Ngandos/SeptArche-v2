@@ -1,41 +1,41 @@
-package fr.abbo.septArche.models;
+package fr.abbo.septArche.modelsTests;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class LivresTest {
+    class CartTest {
 
         @Test
-        void getTitre() {
+        void getId() {
         }
 
         @Test
-        void setTitre() {
+        void setId() {
         }
 
         @Test
-        void getAuteur() {
+        void getPrixHT() {
         }
 
         @Test
-        void setAuteur() {
+        void setPrixHT() {
         }
 
         @Test
-        void getEditeur() {
+        void getPrixTTC() {
         }
 
         @Test
-        void setEditeur() {
+        void setPrixTTC() {
         }
 
         @Test
-        void getIsbn() {
+        void getTva() {
         }
 
         @Test
-        void setIsbn() {
+        void setTva() {
         }
 
         @Test

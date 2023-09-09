@@ -27,7 +27,7 @@ public class CommandeServices {
         return repCommande.findById(id);
     }
 
-    /**Créée une Commande en base tout en gerant l'exc eption de stock
+    /**Créée une Commande en base tout en gerant l'exception de stock
      * Opération transactionnelle s'annule si une des étapes échoue */
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerCommande(Commande commande) throws StockExceptions {

@@ -13,6 +13,10 @@ public class Stock {
         return nombre;
     }
 
+    public void setNombre(int nombre) {
+        this.nombre = nombre;
+    }
+
     /**
      * Incrémente la quantité en stock en ajoutant une valeur donnée.
      * @param ajout La valeur à ajouter à la quantité en stock.
@@ -29,11 +33,12 @@ public class Stock {
      */
 
     public void decremente(int ajout) throws StockExceptions {
+        //logger.debug("stock avant decrementation : {}", nombre);
         if (ajout <= nombre) {
             nombre -= ajout;
+            //logger.debug("stock apres decrementation : {}", nombre);
         } else {
             throw new StockExceptions("stock insuffisant");
         }
     }
-
 }

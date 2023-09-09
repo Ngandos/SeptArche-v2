@@ -1,14 +1,10 @@
-package fr.abbo.septArche.models;
+package fr.abbo.septArche.modelsTests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class CommandeTest {
-
-        @Test
-        void ajoutLigneCommande() {
-        }
+    class VendeurTest {
 
         @Test
         void getId() {
@@ -19,27 +15,19 @@ import org.springframework.boot.test.context.SpringBootTest;
         }
 
         @Test
-        void getContenu() {
+        void getEnseigne() {
         }
 
         @Test
-        void setContenu() {
+        void setEnseigne() {
         }
 
         @Test
-        void getDate_commande() {
+        void getSiret() {
         }
 
         @Test
-        void setDate_commande() {
-        }
-
-        @Test
-        void getStatus() {
-        }
-
-        @Test
-        void setStatus() {
+        void setSiret() {
         }
 
         @Test

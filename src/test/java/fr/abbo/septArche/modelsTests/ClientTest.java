@@ -1,4 +1,4 @@
-package fr.abbo.septArche.models;
+package fr.abbo.septArche.modelsTests;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;

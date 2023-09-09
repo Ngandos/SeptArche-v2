@@ -1,10 +1,10 @@
-package fr.abbo.septArche.models;
+package fr.abbo.septArche.modelsTests;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class UtilisateurTest {
+    class CategorieTest {
 
         @Test
         void getId() {
@@ -15,27 +15,19 @@ package fr.abbo.septArche.models;
         }
 
         @Test
-        void isAdmin() {
+        void getNom() {
         }
 
         @Test
-        void setAdmin() {
+        void setNom() {
         }
 
         @Test
-        void getPseudo() {
+        void getDescription() {
         }
 
         @Test
-        void setPseudo() {
-        }
-
-        @Test
-        void getEmail() {
-        }
-
-        @Test
-        void setEmail() {
+        void setDescription() {
         }
 
         @Test

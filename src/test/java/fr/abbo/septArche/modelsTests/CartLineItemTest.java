@@ -1,41 +1,41 @@
-package fr.abbo.septArche.models;
+package fr.abbo.septArche.modelsTests;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class CartTest {
+    class CartLineItemTest {
 
         @Test
-        void getId() {
+        void getPrixLineHT() {
         }
 
         @Test
-        void setId() {
+        void setPrixLineHT() {
         }
 
         @Test
-        void getPrixHT() {
+        void getPrixLineTTC() {
         }
 
         @Test
-        void setPrixHT() {
+        void setPrixLineTTC() {
         }
 
         @Test
-        void getPrixTTC() {
+        void getDesignation() {
         }
 
         @Test
-        void setPrixTTC() {
+        void setDesignation() {
         }
 
         @Test
-        void getTva() {
+        void getQty() {
         }
 
         @Test
-        void setTva() {
+        void setQty() {
         }
 
         @Test
