@@ -17,22 +17,42 @@ public class UserController {
     @Autowired
     private UserRepository rep;
 
+
+    /**
+     * Affichage de la liste des utilisateurs.
+     */
     @GetMapping()
     public List<Users> findAll() {
         return rep.findAll();
     }
+
+    /**
+     * Recherche un utilisateur par son ID.
+     */
     @GetMapping("/{id}")
     public Optional<Users> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
+
+    /**
+     * Recherche un utilisateur par son nom utilisateur.
+     */
     @GetMapping("/username")
     public Users findByUsername(@RequestParam String username) {
         return rep.findByUsername(username);
     }
+
+    /**
+     * Recherche un utilisateur par son Email.
+     */
     @GetMapping("/email")
     public Users findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
     }
+
+    /**
+     * Methode d'ajout d'un utilisateur.
+     */
     @PostMapping("/save")
     public ResponseEntity<Users> createUser(@RequestBody Users user) {
         Users createdUser = rep.save(user);

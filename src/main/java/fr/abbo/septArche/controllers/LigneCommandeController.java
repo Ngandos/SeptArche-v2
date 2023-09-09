@@ -14,10 +14,18 @@ import java.util.Optional;
 public class LigneCommandeController {
     @Autowired
     private LigneCommandeServices rep;
+
+    /**
+     * Recherche un liste des LignesCommande.
+     */
     @GetMapping()
     public List<LigneCommande> findAll() {
         return rep.findAll();
     }
+
+    /**
+     * Recherche une LigneCommande par son ID.
+     */
     @GetMapping("/{id}")
     public Optional<LigneCommande> findById(Long id) {
         return rep.findById(id);

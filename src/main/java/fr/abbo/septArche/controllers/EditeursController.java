@@ -12,16 +12,29 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/editeurs")
 public class EditeursController {
+
     @Autowired
     private EditeursRepository rep;
+
+    /**
+     * Affiche la liste des Editeurs.
+     */
     @GetMapping()
     public List<Editeurs> findAll() {
         return rep.findAll();
     }
+
+    /**
+     * Recherche un Editeur par son ID.
+     */
     @GetMapping("/{id}")
     public Optional<Editeurs> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
+
+    /**
+     * Recherche un Editeur par son nom d'Enseigne.
+     */
     @GetMapping(params = {"enseigne"})
     public Editeurs findByEnseigne(@RequestParam String enseigne) {
         return rep.findByEnseigne(enseigne);

@@ -14,14 +14,25 @@ public class CategorieController {
     @Autowired
     private CategorieRepository rep;
 
+    /**
+     * Affiche la liste des Categories.
+     */
     @GetMapping()
     public List<Categorie> findAll() {
         return rep.findAll();
     }
+
+    /**
+     * Recherche un Categorie par son Nom.
+     */
     @GetMapping(params = {"nom"})
     public Categorie findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);
     }
+
+    /**
+     * Recherche une Categorie par sa Désignation.
+     */
     @GetMapping(params = {"designation"})
     public Categorie findByDescription(@RequestParam String description) {
         return rep.findByDescription(description);

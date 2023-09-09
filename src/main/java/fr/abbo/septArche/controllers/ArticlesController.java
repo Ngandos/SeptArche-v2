@@ -14,22 +14,42 @@ import java.util.Optional;
     public class ArticlesController {
         @Autowired
         private ArticlesRepository rep;
+
+        /**
+         * Affiche la liste des Articles.
+         */
         @GetMapping()
         public List<Articles> findAll() {
             return rep.findAll();
         }
+
+        /**
+         * Recherche un Article par son ID.
+         */
         @GetMapping("/{id}")
         public Optional<Articles> findById(@PathVariable Long id) {
             return rep.findById(id);
         }
+
+        /**
+         * Recherche un Article par sa Reference.
+         */
         @GetMapping(params = {"ref"})
         public Articles findByRef(@RequestParam String ref) {
             return rep.findByRef(ref);
         }
+
+        /**
+         * Recherche un Article par sa Désignation.
+         */
         @GetMapping(params = {"designation"})
         public Articles rechercheParDesignation(@RequestParam String designation) {
             return (Articles) rep.findByDesignationContains(designation);
         }
+
+        /**
+         * Recherche un Article par une tranche de prix definie par l'utilisateur.
+         */
         @GetMapping(params = {"prixMini, prixMaxi"})
         public List<Articles> findAllBetweenPrix(@RequestParam double prixMini, @RequestParam double prixMaxi){
             return rep.findAllBetweenPrix(prixMini, prixMaxi);

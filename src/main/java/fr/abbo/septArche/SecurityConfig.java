@@ -21,34 +21,47 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 public class SecurityConfig {
     private PasswordEncoder passwordEncoder;
 
-    // on explique à Spring qu'on accède aux utilisateurs avec JDBC.....................................................
+    /**Indique a Spring la Source des données*/
     @Bean
     public UserDetailsService userDetailsService(DataSource datasource) {
         return new JdbcUserDetailsManager(datasource);
     }
 
+    /**
+     * Configure l'encryption du password.
+     */
     @Bean
     PasswordEncoder passwordEncoder() {
         return  new BCryptPasswordEncoder();
     }
 
+    /**
+     * Configure l'encryption du password en définissant le niveau d'Encryption.
+     */
     /*@Bean
     public PasswordEncoder bcryptEncoder() {
         return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2Y, 12);
     }*/
 
+    /**
+     * Définit les requetes authorisées et les niveaux d'accés utilisateurs
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .authorizeHttpRequests((requests) -> requests
-                // another matchers
+
+            /**Indique que toutes les requêtes sont regies par différents niveaux d'accès et donne l'accés a la console H2*/
                 .requestMatchers(toH2Console()).permitAll() // <-
                 .requestMatchers("/articles/**").permitAll()
                 .requestMatchers(HttpMethod.POST,"/login").hasRole("USER")
                 .requestMatchers(HttpMethod.POST,"/commandes/**").hasRole("USER")
-                // another matchers
+
+            /**Indique que toutes les autres requêtes sont soumises a l'Authetification*/
                 .anyRequest().authenticated()
             )
+
+            /**Authorise l'accès a La base de sonnées en memoire*/
                 .httpBasic(Customizer.withDefaults())
                 .csrf((protection) -> protection
                 .ignoringRequestMatchers(toH2Console()) // <-
@@ -81,17 +94,7 @@ public class SecurityConfig {
 
     //http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     *//* version avec basic auth *//*
-
-        http.authorizeHttpRequests(
-            (authorize) -> authorize
-                .requestMatchers(toH2Console()).permitAll()
-
-            )
-
-
-        return http.build();
-
-    }
+        }
    */
 }
 

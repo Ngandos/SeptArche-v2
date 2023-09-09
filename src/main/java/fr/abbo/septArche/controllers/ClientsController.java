@@ -13,11 +13,18 @@ import java.util.List;
 public class ClientsController {
     @Autowired
     private ClientsRepository rep;
+
+    /**
+     * Affiche la liste des Client.
+     */
     @GetMapping()
     public List<Client> findAll() {
         return rep.findAll();
     }
 
+    /**
+     * Recherche un Client par son Nom.
+     */
     @GetMapping(params = {"nom"})
     public Client findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);

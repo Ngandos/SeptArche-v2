@@ -15,14 +15,26 @@ import java.util.Optional;
 public class AuteursController {
     @Autowired
     private AuteursRepository rep;
+
+    /**
+     * Affiche la liste des Auteurs.
+     */
     @GetMapping()
     public List<Auteurs> findAll() {
         return rep.findAll();
     }
+
+    /**
+     * Recherche un Auteur par son ID.
+     */
     @GetMapping(params = {"/{id}"})
     public Optional<Auteurs> findById(@RequestParam Long id) {
         return rep.findById(id);
     }
+
+    /**
+     * Recherche un Auteur par son Nom.
+     */
     @GetMapping(params = {"nom"})
     public Auteurs findByNom(@RequestParam String nom) {
         return rep.findByNom(nom);

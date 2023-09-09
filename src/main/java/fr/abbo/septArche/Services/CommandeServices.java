@@ -3,14 +3,10 @@ package fr.abbo.septArche.Services;
 import fr.abbo.septArche.DAO.CommandeRepository;
 import fr.abbo.septArche.exceptions.StockExceptions;
 import fr.abbo.septArche.models.Commande;
-import fr.abbo.septArche.models.LigneCommande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +16,19 @@ public class CommandeServices {
     private LigneCommandeServices repLigneCommande;
     @Autowired
     private CommandeRepository repCommande;
+
+    /**Affiche la liste des Commandes*/
     public List<Commande> findAll() {
         return repCommande.findAll();
     }
+
+    /**Recherche une Commande par son ID */
     public Optional<Commande> findById(Long id) {
         return repCommande.findById(id);
     }
+
+    /**Créée une Commande en base tout en gerant l'exc eption de stock
+     * Opération transactionnelle s'annule si une des étapes échoue */
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerCommande(Commande commande) throws StockExceptions {
         repCommande.save(commande);

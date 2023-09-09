@@ -9,11 +9,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class AuthentificationController {
 
+    /**
+     * Vérifie les parametres de connexion Utilisateur pour authentification.
+     */
     @PostMapping()
     public Users login(@RequestBody Users users) {
-        // Si on arrive dans cette méthode c'est qu'on est authentifié (Spring Security nous bloque sinon)
+
+        /**
+         * Une fois authentifier on arrive dans cette méthode sinon Spring Sécurity nous bloque.
+         */
         System.out.println("login de : " + users.getUsername());
+
+        /**
+         * La méthode retourne l'Utilisateur connécté pour indiquer a REACT que celui)ci est bien connecté.
+         */
         return users;
-        // retourne l'utilisateur connecté pour que React soit au courant que l'authentification est bonne
     }
 }

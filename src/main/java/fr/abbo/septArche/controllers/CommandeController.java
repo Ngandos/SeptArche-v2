@@ -20,21 +20,27 @@ public class CommandeController {
     @Autowired
     private CommandeServices repCommandeServices;
 
+    /**
+     * Affiche la liste des Commandes.
+     */
     @GetMapping()
     public List<Commande> findAll() {
         return repCommandeServices.findAll();
     }
+
+    /**
+     * Recherche une Commande par son ID.
+     */
     @GetMapping(path = "/{id}")
     public Optional<Commande> findById(@PathVariable Long id) {
         return repCommandeServices.findById(id);
     }
+
+    /**
+     * Recherche une Commande par sa Date de création.
+     */
     @GetMapping(params = {"dateCommande"})
     public Commande findByDateCommande(@RequestParam String dateCommande) {
         return rep.findByDateCommande(dateCommande);
     }
-
-    /*@PostMapping("/creerCommande")
-    public Commande creerCommande(@RequestBody Commande commande) throws Exception {
-        return repCommandeServices.creerCommande(commande);
-    }*/
 }

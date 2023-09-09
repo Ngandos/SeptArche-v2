@@ -15,8 +15,6 @@ public class Users {
     private String password;
     private boolean enabled=true;
 
-
-
     public Users() {}
 
     public Users(String username, String email, String password) {
@@ -24,7 +22,6 @@ public class Users {
         this.email = email;
         this.password = password;
     }
-
 
     public String getUsername() {
         return username;
@@ -44,22 +41,20 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
-
     public boolean isEnabled() {
         return enabled;
     }
-
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-
-                ", username='" + username + '\'' +
+        return "Users{" +
+                "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }

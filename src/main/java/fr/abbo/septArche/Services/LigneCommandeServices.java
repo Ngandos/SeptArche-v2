@@ -30,6 +30,8 @@ public class LigneCommandeServices {
     public Optional<Commande> findByCommande(Long id) {
         return repLigneCommande.findByCommande(id);
     }
+
+    /**Créer une LigneCommande en gérant les exceptions de Stock*/
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerLigneCommande(Articles articles, int qte) throws StockExceptions {
         LigneCommande LigneCommande = new LigneCommande();
