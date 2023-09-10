@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -17,7 +18,11 @@ public class EditeursController {
     public List<Editeurs> findAll() {
         return rep.findAll();
     }
-    @GetMapping(params = {"raison_sociale"})
+    @GetMapping("/{id}")
+    public Optional<Editeurs> findById(@PathVariable Long id) {
+        return rep.findById(id);
+    }
+    @GetMapping(params = {"enseigne"})
     public Editeurs findByEnseigne(@RequestParam String enseigne) {
         return rep.findByEnseigne(enseigne);
     }

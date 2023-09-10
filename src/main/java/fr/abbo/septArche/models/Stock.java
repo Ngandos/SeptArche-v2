@@ -11,6 +11,10 @@ public class Stock {
         return nombre;
     }
 
+    public void setNombre(int nombre) {
+        this.nombre = nombre;
+    }
+
     public void incremente(int ajout) {
         nombre += ajout;
     }
@@ -22,5 +26,4 @@ public class Stock {
             throw new StockExceptions("stock insuffisant");
         }
     }
-
 }

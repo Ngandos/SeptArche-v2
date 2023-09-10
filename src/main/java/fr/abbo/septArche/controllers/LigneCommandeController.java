@@ -1,7 +1,7 @@
 package fr.abbo.septArche.controllers;
 
-import fr.abbo.septArche.DAO.StockRepository;
-import fr.abbo.septArche.models.Stock;
+import fr.abbo.septArche.Services.LigneCommandeServices;
+import fr.abbo.septArche.models.LigneCommande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,17 +10,16 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="/stock")
-public class StockController {
-
+@RequestMapping("/ligneCommande")
+public class LigneCommandeController {
     @Autowired
-    private StockRepository rep;
+    private LigneCommandeServices rep;
     @GetMapping()
-    public List<Stock> findAll() {
+    public List<LigneCommande> findAll() {
         return rep.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<Stock> findById(@PathVariable Long id) {
+    public Optional<LigneCommande> findById(Long id) {
         return rep.findById(id);
     }
 }

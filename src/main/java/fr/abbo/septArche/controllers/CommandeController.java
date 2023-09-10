@@ -1,31 +1,36 @@
 package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.CommandeRepository;
+import fr.abbo.septArche.Services.CommandeServices;
 import fr.abbo.septArche.models.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin
+@RestController
+@RequestMapping("/commande")
 public class CommandeController {
     @Autowired
     private CommandeRepository rep;
+    @Autowired
+    private CommandeServices repCommandeServices;
+
     @GetMapping()
     public List<Commande> findAll() {
-        return rep.findAll();
+        return repCommandeServices.findAll();
     }
-    @GetMapping(params = "/{id}")
-    public Optional<Commande> findById(@RequestParam Long id) {
-        return rep.findById(id);
+    @GetMapping(path = "/{id}")
+    public Optional<Commande> findById(@PathVariable Long id) {
+        return repCommandeServices.findById(id);
     }
-    //@GetMapping(params = {"clients"})
-   // public Commande findByClients(@RequestParam String Clients) {
-    //  return rep.findByClients(Clients);
-    //}
-    @GetMapping(params = {"date_commande"})
-    public Commande findByDate_commande(@RequestParam String date_commande) {
-        return rep.findByDate_commande(date_commande);
+    @GetMapping(params = {"dateCommande"})
+    public Commande findByDateCommande(@RequestParam String dateCommande) {
+        return rep.findByDateCommande(dateCommande);
     }
+    /*@PostMapping("/creerCommande")
+    public Commande creerCommande(@RequestBody Commande commande) throws Exception {
+        return repCommandeServices.creerCommande(commande);
+    }*/
 }

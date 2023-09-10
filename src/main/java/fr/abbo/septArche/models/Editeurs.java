@@ -12,14 +12,15 @@ public class Editeurs {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    Long id;
-    String enseigne;
+    private Long id;
+    private String enseigne;
 
     public Editeurs(){}
     public Editeurs(Long id, String enseigne) {
         this.id = id;
         this.enseigne = enseigne;
     }
+
     public Long getId() {
         return id;
     }
@@ -29,14 +30,11 @@ public class Editeurs {
     public String getEnseigne() {
         return enseigne;
     }
-    public void setEnseigne(String Enseigne) {
+    public void setEnseigne(String enseigne) {
         this.enseigne = enseigne;
     }
     @Override
     public String toString() {
-        return "Editeurs{" +
-                "id=" + id +
-                ", raison_sociale='" + enseigne + '\'' +
-                '}';
+        return "Editeurs{" + "id=" + id + ", Enseigne ='" + enseigne + '\'' + '}';
     }
 }

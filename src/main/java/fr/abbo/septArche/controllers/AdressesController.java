@@ -18,12 +18,17 @@ public class AdressesController {
     public List<Adresses> findAll() {
         return rep.findAll();
     }
+    @GetMapping(params = "/{id}")
+    public Optional<Adresses> findById(@PathVariable Long id) {
+        return rep.findById(id);
+    }
     @GetMapping(params = {"rue"})
     public Adresses findByRue(@RequestParam String rue) {
         return rep.findByRue(rue);
     }
-    @GetMapping(params = "/{id}")
-    public Optional<Adresses> findById(@RequestParam Long id) {
-        return rep.findById(id);
+    @GetMapping(params = {"codePostal"})
+    public Adresses findByCodePostal(@RequestParam String codePostal) {
+        return rep.findByCodePostal(codePostal);
     }
+
 }

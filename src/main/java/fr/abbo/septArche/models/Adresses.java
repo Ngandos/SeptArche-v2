@@ -9,15 +9,16 @@ public class Adresses {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    Long num_rue;
-    String rue;
-    String codePostal;
-    String ville;
-    String pays;
+    private Long numRue;
+    private String rue;
+    private String codePostal;
+    private String ville;
+    private String pays;
+
     public Adresses(){}
-    public Adresses(Long id, Long num_rue, String rue, String codePostal, String ville, String pays) {
+    public Adresses(Long id, Long numRue, String rue, String codePostal, String ville, String pays) {
         this.id = id;
-        this.num_rue = num_rue;
+        this.numRue = numRue;
         this.rue = rue;
         this.codePostal = codePostal;
         this.ville = ville;
@@ -30,10 +31,10 @@ public class Adresses {
         this.id = id;
     }
     public Long getNum_rue() {
-        return num_rue;
+        return numRue;
     }
     public void setNumRue(Long num_rue) {
-        this.num_rue = num_rue;
+        this.numRue = numRue;
     }
     public String getRue() {
         return rue;
@@ -63,7 +64,7 @@ public class Adresses {
     public String toString() {
         return "Adresses{" +
                 "id=" + id +
-                ", num_rue=" + num_rue +
+                ", numRue=" + numRue +
                 ", rue='" + rue + '\'' +
                 ", codePostal='" + codePostal + '\'' +
                 ", ville='" + ville + '\'' +
