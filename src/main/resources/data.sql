@@ -111,6 +111,9 @@ INSERT INTO authorities (username, authority) VALUES ('Ngando', 'ROLE_ADMIN');
 INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
 INSERT INTO authorities (username, authority) VALUES ('Likoko', 'ROLE_ADMIN');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Popi', 'Popilele@gmail.fr', '170990', true);
+INSERT INTO authorities (username, authority) VALUES ('Popi', 'ROLE_USER');
+
 --Persistance Commands Embedded Objects................................................................................
 
 INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
