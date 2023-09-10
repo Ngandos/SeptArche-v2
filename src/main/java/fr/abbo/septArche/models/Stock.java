@@ -3,42 +3,47 @@ package fr.abbo.septArche.models;
 import fr.abbo.septArche.exceptions.StockExceptions;
 import jakarta.persistence.Embeddable;
 
-@Embeddable
-public class Stock {
-    private int nombre;
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
 
-    /**Recupere le nombre d'Articles en Stock*/
+    @Embeddable
+    public class Stock {
 
-    public int getNombre() {
-        return nombre;
-    }
+        private static final Logger logger = LoggerFactory.getLogger(Stock.class);
+        private int nombre;
 
-    public void setNombre(int nombre) {
-        this.nombre = nombre;
-    }
+        /**Recupere le nombre d'Articles en Stock*/
 
-    /**
-     * Incrémente la quantité en stock en ajoutant une valeur donnée.
-     * @param ajout La valeur à ajouter à la quantité en stock.
-     */
+        public int getNombre() {
+            return nombre;
+        }
 
-    public void incremente(int ajout) {
-        nombre += ajout;
-    }
+        public void setNombre(int nombre) {
+            this.nombre = nombre;
+        }
 
-    /**
-     * Décrémente la quantité en stock en retirant une valeur donnée.
-     * @param ajout La valeur à retirer de la quantité en stock.
-     * @throws StockExceptions Si la quantité en stock est insuffisante.
-     */
+        /**
+         * Incrémente la quantité en stock en ajoutant une valeur donnée.
+         * @param ajout La valeur à ajouter à la quantité en stock.
+         */
 
-    public void decremente(int ajout) throws StockExceptions {
-        //logger.debug("stock avant decrementation : {}", nombre);
-        if (ajout <= nombre) {
-            nombre -= ajout;
-            //logger.debug("stock apres decrementation : {}", nombre);
-        } else {
-            throw new StockExceptions("stock insuffisant");
+        public void incremente(int ajout) {
+            nombre += ajout;
+        }
+
+        /**
+         * Décrémente la quantité en stock en retirant une valeur donnée.
+         * @param ajout La valeur à retirer de la quantité en stock.
+         * @throws StockExceptions Si la quantité en stock est insuffisante.
+         */
+
+        public void decremente(int ajout) throws StockExceptions {
+            logger.debug("stock avant decrementation : {}", nombre);
+            if (ajout <= nombre) {
+                nombre -= ajout;
+                logger.debug("stock apres decrementation : {}", nombre);
+            } else {
+                throw new StockExceptions("stock insuffisant");
+            }
         }
     }
-}

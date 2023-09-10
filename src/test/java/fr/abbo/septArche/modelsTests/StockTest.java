@@ -1,6 +1,11 @@
 package fr.abbo.septArche.modelsTests;
 
-/*
+    import fr.abbo.septArche.exceptions.StockExceptions;
+    import fr.abbo.septArche.models.Stock;
+    import org.junit.Test;
+    import org.junit.jupiter.api.Assertions;
+    import org.springframework.boot.test.context.SpringBootTest;
+
     @SpringBootTest
     public class StockTest {
 
@@ -27,4 +32,4 @@ package fr.abbo.septArche.modelsTests;
             Assertions.assertThrows(StockExceptions.class, () -> stock.decremente(7));
             Assertions.assertEquals(5, stock.getNombre());
         }
-    }*/
+    }
