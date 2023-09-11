@@ -4,16 +4,19 @@
     à architecture 3/3, sa partie Back-End est produite en Java sur le Framework SpringBoot, la partie Front-End elle a été
     Réalisée en REACTJS et TypeScript, puis une base de données MySQL.
 
-1 Getting Started.........................................................................................
+1 Getting Started.......................................................................................................
 
-    Project Structure :
+    Project Structure éléments a installer :
     
     - Project : Maven
     - Langage : Java
-    - Packaging : WAR
+    - Packaging : Jar
     - Java Version : 19
+    - Base de données SQL
+    - Maven plugin 
+    - Sprin-Boot plugin
 
-    Dépendances :
+    Dépendances (Reprises dans le fichier POM.XML):
 
     - Spring Boot Dev Tools
     - Spring Security
@@ -22,17 +25,33 @@
     - MySQL Driver
     - Junit
 
-1.1 Recuperation des sources.............................................................................. 
+1.1 Recuperation des sources............................................................................................ 
 
-    $git clone git@github.com/Ngandos/SeptArcheV-2.git
+    1.1.0 a partir d'un terminal creer un repertoire
 
-1.2 Lancement de l'application............................................................................
+        mkdir + nom de repertoire 
+
+    1.1.1 Se placer dans le repertoire Créé
+
+        cd  + Nom du repertoire
+
+    1.1.2 Cloner le projet
+
+        $git clone git@github.com/Ngandos/SeptArcheV-2.git
+
+    1.1.3 Se placer dans le repertoire du projet
+
+        cd + SeptArcheV-2
+
+1.2 Lancement de l'application..........................................................................................
 
     $ mvn spring-boot: run
 
-    Project Serveur -> tomcat -> URL localhost://8080
+    Spring-Boot va lancer le serveur -> tomcat sur le port 8080 -> URL localhost://8080
 
-1.3 API....................................................................................................
+    On peut modifier le port dans le fichier Application properties 
+
+1.3 API.................................................................................................................
 
 Methods | Paths            | Déscription
 

@@ -40,6 +40,7 @@ public class Articles {
         this.stock = new Stock();
         this.prixTTC = prixTTC;
     }
+
     public Long getId() {
         return id;
     }
