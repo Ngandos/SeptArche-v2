@@ -81,11 +81,15 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (17, 'Harry Pott
 INSERT INTO articles (id, category, prixHT, tva, ref, designation, stock) VALUES (18, 'Livres', 28, 0.2, '161719', 'Blade Runner', 70);
 INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runner', 'J ai lu', '3154PKD', 12);
 
--- Persistence Adresses Clients.........................................................................................
+-- Persistence Adresses.................................................................................................
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
 
--- Insertion des utilisateurs dans la table "users"
+-- Persistence Adresses Clients.........................................................................................
+
+--INSERT INTO Client_Adresses (client_username, adresses_id) VALUES ('Popi', 1);
+
+--Insertion Users Roles Admins dans les tables Users et Authorities......................................................
 
 INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234', 0);
 INSERT INTO authorities (username, authority) VALUES ('Nguma', 'ROLE_ADMIN');
@@ -111,8 +115,11 @@ INSERT INTO authorities (username, authority) VALUES ('Ngando', 'ROLE_ADMIN');
 INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
 INSERT INTO authorities (username, authority) VALUES ('Likoko', 'ROLE_ADMIN');
 
+--Insertion Users Roles Clients dans les table Clients et Authorities...................................................
+
 INSERT INTO Users (username, email, password, enabled) VALUES ('Popi', 'Popilele@gmail.fr', '170990', true);
 INSERT INTO authorities (username, authority) VALUES ('Popi', 'ROLE_USER');
+INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Popi', 'Popi', 'Popilele', 'ACCU263456');
 
 --Persistance Commands Embedded Objects................................................................................
 
