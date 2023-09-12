@@ -7,23 +7,22 @@ import java.util.List;
 
 @Entity
 @Table(name = "client")
-@PrimaryKeyJoinColumn(name = "id")
+@PrimaryKeyJoinColumn(name = "username")
 public class Client extends Users {
     @OneToMany
     private List<Adresses> adresses = new ArrayList<>();
+    @OneToMany
+    private List<Commande> commandes = new ArrayList<>();
     private String nom;
     private String prenom;
     private String numCompte;
-    private Long nbCommandes;
 
     public Client(){}
 
-    public Client(String nom, String prenom, String numCompte, Long nbCommandes) {
-
+    public Client(String nom, String prenom, String numCompte) {
         this.nom = nom;
         this.prenom = prenom;
         this.numCompte = numCompte;
-        this.nbCommandes = nbCommandes;
     }
 
     public List<Adresses> getAdresses() {
@@ -50,17 +49,26 @@ public class Client extends Users {
     public void setNumCompte(String numCompte) {
         this.numCompte = numCompte;
     }
-    public Long getNbCommandes() {
-        return nbCommandes;
+
+    public void setAdresses(List<Adresses> adresses) {
+        this.adresses = adresses;
     }
-    public void setNbCommandes(Long nbCommandes) {
-        this.nbCommandes = nbCommandes;
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override
     public String toString() {
-        return "Client {adresses=" + adresses + ", nom='" + nom
-                + '\'' + ", prenom='" + prenom + '\'' + ", numCompte='" + numCompte + '\''
-                + ", nbCommandes=" + nbCommandes + '}';
+        return "Client{" +
+                "adresses=" + adresses +
+                ", commandes=" + commandes +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", numCompte='" + numCompte + '\'' +
+                '}';
     }
 }

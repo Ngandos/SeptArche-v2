@@ -43,8 +43,8 @@ import java.util.Optional;
          * Recherche un Article par sa Désignation, si le champ est nul l'application renverra une erreur.
          */
         @GetMapping(params = {"designation"})
-        public Articles rechercheParDesignation(@RequestParam String designation) {
-            return (Articles) rep.findByDesignationContains(designation);
+        public Articles findByDesignation(@RequestParam String designation) {
+            return rep.findByDesignation(designation);
         }
 
         /**
