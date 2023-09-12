@@ -12,11 +12,17 @@ import jakarta.persistence.Embeddable;
         private static final Logger logger = LoggerFactory.getLogger(Stock.class);
         private int nombre;
 
-        /**Recupere le nombre d'Articles en Stock*/
-
+        /**
+         * Recupere le nombre d'Articles disponibles en Stock
+         */
         public int getNombre() {
             return nombre;
         }
+
+        /**
+         * Permet de Definir le nombre d'article présent en stock au moment
+         * de la persistence de ce même article.
+         */
 
         public void setNombre(int nombre) {
             this.nombre = nombre;

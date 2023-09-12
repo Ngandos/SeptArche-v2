@@ -18,6 +18,10 @@ public class LigneCommandeServices {
     @Autowired
     private ArticlesRepository repArticles;
     private LigneCommandeServices repLigneCommande;
+
+    /**
+     * Un champ nul ou a mauvaise syntaxe provoquera le renvoi d'un tableau vide voir d'une runtimeException
+     */
     @GetMapping("/ligne_commande")
     public List<LigneCommande> findAll() {
         return repLigneCommande.findAll();
@@ -26,12 +30,20 @@ public class LigneCommandeServices {
     public Optional<LigneCommande> findById(Long id) {
         return repLigneCommande.findById(id);
     }
+
+    /**
+     * Un ID doit etre renseigné sans quoi le serveur renverra une runtimeException,
+     * du fait de la non gestion de cette erreur dans l'état actuel.
+     */
     @GetMapping("/{id}")
     public Optional<Commande> findByCommande(Long id) {
         return repLigneCommande.findByCommande(id);
     }
 
-    /**Créer une LigneCommande en gérant les exceptions de Stock*/
+    /**
+     * Ajoute une LigneCommande à la commande en gérant les exceptions de Stock, si le stock est insufisant
+     * l'application renverra notre message d'exception stock insufisant
+     */
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerLigneCommande(Articles articles, int qte) throws StockExceptions {
         LigneCommande LigneCommande = new LigneCommande();

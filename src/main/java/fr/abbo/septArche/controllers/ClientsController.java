@@ -15,7 +15,7 @@ public class ClientsController {
     private ClientsRepository rep;
 
     /**
-     * Affiche la liste des Client.
+     * Recherche les Clients et retourne une liste de clients.
      */
     @GetMapping()
     public List<Client> findAll() {
@@ -23,7 +23,9 @@ public class ClientsController {
     }
 
     /**
-     * Recherche un Client par son Nom.
+     * Recherche un Client par son Nom et retourne l'objet client correspondant.
+     * Un Champ nul ne renverra rien car exception non gérée dans l'état actuel,
+     * Il est également possible que Spring-Boot renvoie une runtimeException
      */
     @GetMapping(params = {"nom"})
     public Client findByNom(@RequestParam String nom) {

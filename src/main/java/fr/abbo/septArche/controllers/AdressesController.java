@@ -16,7 +16,7 @@ public class AdressesController {
     private AdressesRepository rep;
 
     /**
-     * Affiche laliste des Adresses.
+     * Cherche et retourne la liste des Adresses.
      */
     @GetMapping()
     public List<Adresses> findAll() {
@@ -33,6 +33,9 @@ public class AdressesController {
 
     /**
      * Recherche une Adresse par sa Rue.
+     * Dans le cas ou le nom de la rue saisi n'éxiste pas ou la syntaxe etait inexacte, Srping-Boot renverrai une
+     * runtime
+     * exception
      */
     @GetMapping(params = {"rue"})
     public Adresses findByRue(@RequestParam String rue) {

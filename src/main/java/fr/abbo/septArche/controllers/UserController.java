@@ -51,7 +51,7 @@ public class UserController {
     }
 
     /**
-     * Methode d'ajout d'un utilisateur.
+     * Methode de persistence d'un utilisateur.
      */
     @PostMapping("/save")
     public ResponseEntity<Users> createUser(@RequestBody Users user) {

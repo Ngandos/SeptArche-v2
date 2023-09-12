@@ -17,12 +17,16 @@ public class CommandeServices {
     @Autowired
     private CommandeRepository repCommande;
 
-    /**Affiche la liste des Commandes*/
+    /**
+     * Affiche la liste des Commandes, reverra un tableau vide si aucune commande n'est existante
+     */
     public List<Commande> findAll() {
         return repCommande.findAll();
     }
 
-    /**Recherche une Commande par son ID */
+    /**
+     * Recherche une Commande par son ID, le champ ne doit pas etre nul sans quoi le serveur renverra une erreur
+     */
     public Optional<Commande> findById(Long id) {
         return repCommande.findById(id);
     }

@@ -61,7 +61,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
 
-            /**Authorise l'accès a La base de sonnées en memoire*/
+            /**Authorise l'accès a H2 La base de sonnées en memoire*/
                 .httpBasic(Customizer.withDefaults())
                 .csrf((protection) -> protection
                 .ignoringRequestMatchers(toH2Console()) // <-
