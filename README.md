@@ -1,8 +1,8 @@
 # SeptArche-v2
 
     SeptArche-v2 est un application de vente en ligne proposant des articles portant sur le theme du cinema, application 
-    à architecture 3/3, sa partie Back-End est produite en Java sur le Framework SpringBoot, la partie Front-End elle a été
-    Réalisée en REACTJS et TypeScript, puis une base de données MySQL.
+    à architecture 3/3, sa partie Back-End est produite en Java sur le Framework SpringBoot, la partie Front-End elle a 
+    été Réalisée en REACTJS et TypeScript, puis une base de données MySQL.
 
 1 Getting Started.......................................................................................................
 
