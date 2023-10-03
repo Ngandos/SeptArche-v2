@@ -103,11 +103,16 @@ INSERT INTO Admin (id, niv_Acces) VALUES (8, 'Admin');
 -- Persistance Commands Embedded Objects................................................................................
 
 INSERT INTO Commande (id, id_client, date_commande, status ) VALUES (1, 1, '2023-07-19', 'Términée');
-
--- Persistance LigneCommands Embedded Objects
-
 INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1 );
 INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4 );
+
+-- Problème integrité clé etrangère sur id ligne commande retirer clé unique ?
+
+INSERT INTO Commande (id, id_client, date_commande, status ) VALUES (2, 4, '2023-10-03', 'En cours');
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (3, 2, 8, 1 );
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (4, 2, 16, 4 );
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (5, 2, 9, 1 );
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (6, 2, 15, 4 );
 
 
 

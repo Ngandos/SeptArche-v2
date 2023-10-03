@@ -22,9 +22,10 @@ public class Commande {
     Date dateCommande;
     String status;
     public Commande(){}
-    public Commande(String status) {
+    public Commande(String status, Client client) {
         this.dateCommande = new Date();
         this.status = status;
+        this.client = client;
     }
     public void ajoutLigneCommande(Articles article, int qte) {
         LigneCommande ligneCommande = new LigneCommande(article, qte);

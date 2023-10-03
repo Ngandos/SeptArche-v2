@@ -18,5 +18,5 @@ public interface CommandeRepository extends JpaRepository<Commande, Long> {
 
     Commande findByDateCommande(String dateCommande);
 
-    Commande findByCommandeClient(Long idClient);
+    Commande findByClient(Long idClient);
 }
