@@ -87,7 +87,7 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 -- Persistence Adresses Clients.........................................................................................
 
---INSERT INTO Client_Adresses (client_username, adresses_id) VALUES ('Popi', 1);
+--INSERT INTO Client_Adresses (client_nom, adresses_id) VALUES ('Popi', 1);
 
 --Insertion Users Roles Admins dans les tables Users et Authorities......................................................
 

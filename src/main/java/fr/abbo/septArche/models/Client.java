@@ -9,9 +9,9 @@ import java.util.List;
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "username")
 public class Client extends Users {
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "id")
     private List<Adresses> adresses = new ArrayList<>();
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "id")
     private List<Commande> commandes = new ArrayList<>();
     private String nom;
     private String prenom;

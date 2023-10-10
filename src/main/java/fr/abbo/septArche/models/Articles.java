@@ -22,7 +22,7 @@ public class Articles {
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
+        @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
     })
     private Stock stock;
     @ManyToOne()
