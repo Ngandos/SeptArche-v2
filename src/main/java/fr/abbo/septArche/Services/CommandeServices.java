@@ -19,14 +19,17 @@ public class CommandeServices {
     private LigneCommandeServices repLigneCommande;
     @Autowired
     private CommandeRepository repCommande;
+
     @GetMapping("/commande")
     public List<Commande> findAll(@RequestParam Long id) {
         return repCommande.findAll();
     }
+
     @GetMapping("/{id}")
     public Optional<Commande> findById(Long id) {
         return repCommande.findById(id);
     }
+
     @Transactional(rollbackFor = StockExceptions.class)
     public void creerCommande(Long id, Date date_commande, String status) throws StockExceptions {
         Commande commande = new Commande();
