@@ -7,61 +7,52 @@ import jakarta.persistence.*;
 @PrimaryKeyJoinColumn(name = "id")
 public class Livres extends Articles {
     private String titre;
-    @JoinColumn(name = "idAuteur")
+    @JoinColumn(name = "idAuteurs")
     @ManyToOne
-    private Auteurs auteur;
-    private String editeur;
+    private Auteurs auteurs;
+    @JoinColumn(name = "idEditeurs")
+    @ManyToOne
+    private Editeurs editeurs;
     private String isbn;
 
     public Livres() {
     }
 
-    public Livres(String titre, Auteurs auteur, String editeur, String isbn) {
+    public Livres(String titre, Auteurs auteurs, Editeurs editeurs, String isbn) {
         this.titre = titre;
-        this.auteur = auteur;
-        this.editeur = editeur;
+        this.auteurs = auteurs;
+        this.editeurs = editeurs;
         this.isbn = isbn;
     }
 
     public String getTitre() {
         return titre;
     }
-
     public void setTitre(String titre) {
         this.titre = titre;
     }
-
-    public Auteurs getAuteur() {
-        return auteur;
+    public Auteurs getAuteurs() {
+        return auteurs;
     }
-
-    public void setAuteur(Auteurs auteur) {
-        this.auteur = auteur;
+    public void setAuteurs(Auteurs auteurs) {
+        this.auteurs = auteurs;
     }
-
-    public String getEditeur() {
-        return editeur;
+    public Editeurs getEditeurs() {
+        return editeurs;
     }
-
-    public void setEditeur(String editeur) {
-        this.editeur = editeur;
+    public void setEditeurs(Editeurs editeurs) {
+        this.editeurs = editeurs;
     }
-
     public String getIsbn() {
         return isbn;
     }
-
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
     @Override
     public String toString() {
-        return "Livre{" +
-                ", titre='" + titre + '\'' +
-                ", auteur='" + auteur + '\'' +
-                ", editeur='" + editeur + '\'' +
-                ", isbn='" + isbn + '\'' +
-                '}';
+        return "Livres{" + ", titre='" + titre + '\'' + ", auteurs=" + auteurs + ", editeurs='" + editeurs + '\'' +
+                ", isbn='" + isbn + '\'' + '}';
     }
 }

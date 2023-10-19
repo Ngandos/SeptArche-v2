@@ -7,39 +7,64 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Articles {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "ref", nullable =  false, length = 30, unique = true)
+
+    @Column(name = "ref",length = 50)
     private String ref;
+
+    @Column(name = "categorie")
+    private String categorie;
+
+    @Column(name = "designation", length = 100)
     private String designation;
-    private String category;
+    @Column(name = "resume", length = 500)
+    private String resume;
+
+    @Column(name = "prixHT")
     private double prixHT;
+
+    @Column(name = "tva")
     private double tva = 0.2;
-    @Transient
-    private double prixTTC = prixHT * (1 + tva);
+    @Column(name = "image", length = 255)
+    private String image;
+
+    @Column(name = "format", length = 50)
+    private String format;
+
+    @Column(name = "is_num")
+    private boolean numerique;
+
 
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
+            @AttributeOverride(name = "nombre", column = @Column(name = "stock"))
     })
     private Stock stock;
-    @ManyToOne()
-    @JoinColumn(name = "vendeur_id")
-    private Vendeur vendeur;
 
-    protected Articles(){}
+    //constructeur
 
-    public Articles(Long id, String category, double prixHT, String ref, String designation, double prixTTC) {
+    public Articles() {
+
+    }
+
+    public Articles(Long id, String ref, String categorie, String designation, String resume, double prixHT, double tva, String image, String format, boolean numerique, Stock stock) {
         this.id = id;
         this.ref = ref;
+        this.categorie = categorie;
         this.designation = designation;
-        this.category = category;
+        this.resume = resume;
         this.prixHT = prixHT;
+        this.tva = tva;
+        this.image = image;
+        this.format = format;
+        this.numerique = numerique;
         this.stock = new Stock();
-        this.prixTTC = prixTTC;
     }
+
+    //getters et setters
+
     public Long getId() {
         return id;
     }
@@ -52,23 +77,26 @@ public class Articles {
     public void setRef(String ref) {
         this.ref = ref;
     }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
     public String getDesignation() {
         return designation;
     }
     public void setDesignation(String designation) {
         this.designation = designation;
     }
-    public Stock getStock() {
-        return stock;
+    public String getResume() {
+        return resume;
     }
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
+    public void setResume(String resume) {
+        this.resume = resume;
     }
     public double getPrixHT() {
         return prixHT;
@@ -77,7 +105,7 @@ public class Articles {
         this.prixHT = prixHT;
     }
     public double getPrixTTC() {
-        return prixHT*(1+tva);
+        return prixHT * (1 + tva);
     }
     public double getTva() {
         return tva;
@@ -85,17 +113,45 @@ public class Articles {
     public void setTva(double tva) {
         this.tva = tva;
     }
-    public Vendeur getVendeur() {
-        return vendeur;
+    public String getImage() {
+        return image;
     }
-    public void setVendeur(Vendeur vendeur) {
-        this.vendeur = vendeur;
+    public void setImage(String image) {
+        this.image = image;
     }
+    public String getFormat() {
+        return format;
+    }
+    public void setFormat(String format) {
+        this.format = format;
+    }
+    public boolean isNumerique() {
+        return numerique;
+    }
+    public void setNumerique(boolean numerique) {
+        this.numerique = numerique;
+    }
+    public Stock getStock() {
+        return stock;
+    }
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         return "Articles{" +
-                "id = " + id + ", ref='" + ref + ", designation='" + designation + ", category='" + category +
-                ", prixHT=" + prixHT + ", tva=" + tva + ", prixTTC = " + prixTTC + ", stock=" + stock +
-                ", vendeur=" + vendeur + '}';
+                "id=" + id +
+                ", ref='" + ref + '\'' +
+                ", designation='" + designation + '\'' +
+                ", resume='" + resume + '\'' +
+                ", prixHT=" + prixHT +
+                ", tva=" + tva +
+                ", image='" + image + '\'' +
+                ", format='" + format + '\'' +
+                ", numerique=" + numerique +
+                ", stock=" + stock +
+                '}';
     }
 }
+

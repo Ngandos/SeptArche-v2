@@ -14,17 +14,33 @@ import java.util.Optional;
 public class ClientsController {
     @Autowired
     private ClientsRepository rep;
+
     @GetMapping()
     public List<Client> findAll() {
         return rep.findAll();
     }
-    @GetMapping(params = "/{id}")
+    @GetMapping("/{id}")
     public Optional<Client> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
-    @GetMapping(params = {"nom"})
-    public Client findByNom(@RequestParam String nom) {
+    @GetMapping({"nom"})
+    public Client findByNom(@PathVariable String nom) {
         return rep.findByNom(nom);
+    }
+
+    @GetMapping({"prenom"})
+    public Client findByPrenom(@PathVariable String prenom) {
+        return rep.findByPrenom(prenom);
+    }
+
+    @GetMapping({"numCompte"})
+    public Client findByNumCompte(@PathVariable String numCompte) {
+        return rep.findByNumCompte(numCompte);
+    }
+
+    @PostMapping()
+    public Client save(@RequestBody Client client) {
+        return rep.save(client);
     }
 
 }

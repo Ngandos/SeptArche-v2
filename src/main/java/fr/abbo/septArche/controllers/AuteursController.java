@@ -23,8 +23,8 @@ public class AuteursController {
     public Optional<Auteurs> findById(@RequestParam Long id) {
         return rep.findById(id);
     }
-    @GetMapping(params = {"nom"})
-    public Auteurs findByNom(@RequestParam String nom) {
+    @GetMapping({"nom"})
+    public Auteurs findByNom(@PathVariable String nom) {
         return rep.findByNom(nom);
     }
 }

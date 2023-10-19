@@ -28,7 +28,7 @@ public class UtilisateurController {
         return rep.findByPseudo(pseudo);
     }
     @GetMapping({"email"})
-    public Utilisateur findByEmail(@RequestParam String email) {
+    public Utilisateur findByEmail(@PathVariable String email) {
         return rep.findByEmail(email);
     }
 }
