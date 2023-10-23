@@ -13,41 +13,71 @@ public class Client extends Utilisateur {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    @JoinColumn(name = "adresses_id",nullable = false)
     @OneToMany
     private List<Adresses> adresses = new ArrayList<>();
+    private int codePostal;
+    @JoinColumn(name = "commande_id",nullable = false)
+    @OneToMany
+    private List<Commande> commandes = new ArrayList<>();
     private String nom;
     private String prenom;
-    private String numCompte;
-    private Long nbCommandes;
+    private String numClient;
 
     public Client(){}
 
-    public Client(Long id, String nom, String prenom, String numCompte, Long nbCommandes) {
+    public Client(Long id, String nom, String prenom, String numClient) {
         this.id = id;
+        this.adresses = adresses;
+        this.codePostal = codePostal;
+        this.commandes = commandes;
         this.nom = nom;
         this.prenom = prenom;
-        this.numCompte = numCompte;
-        this.nbCommandes = nbCommandes;
+        this.numClient = numClient;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
+
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
+
     public List<Adresses> getAdresses() {
         return adresses;
     }
-    public void addAdresse(Adresses adresse) {
-        this.adresses.add(adresse);
+
+    public void setAdresses(List<Adresses> adresses) {
+        this.adresses = adresses;
     }
+
+    public int getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(int codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+
     public String getNom() {
         return nom;
     }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
@@ -55,23 +85,25 @@ public class Client extends Utilisateur {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    public String getNumCompte() {
-        return numCompte;
+
+    public String getNumClient() {
+        return numClient;
     }
-    public void setNumCompte(String numCompte) {
-        this.numCompte = numCompte;
-    }
-    public Long getNbCommandes() {
-        return nbCommandes;
-    }
-    public void setNbCommandes(Long nbCommandes) {
-        this.nbCommandes = nbCommandes;
+
+    public void setNumClient(String numClient) {
+        this.numClient = numClient;
     }
 
     @Override
     public String toString() {
-        return "Client {" + "id=" + id + ", adresses=" + adresses + ", nom='" + nom
-                + '\'' + ", prenom='" + prenom + '\'' + ", numCompte='" + numCompte + '\''
-                + ", nbCommandes=" + nbCommandes + '}';
+        return "Client{" +
+                "id=" + id +
+                ", adresses=" + adresses +
+                ", codePostal=" + codePostal +
+                ", commandes=" + commandes +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", numClient='" + numClient + '\'' +
+                '}';
     }
 }

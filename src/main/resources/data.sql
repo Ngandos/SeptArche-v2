@@ -72,11 +72,12 @@ INSERT INTO livres (id, titre, editeur, isbn, id_auteur) VALUES (18, 'Blade Runn
 
 INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12, 'Rue des étangs', '62870', 'Roussent', 'France');
 
--- Persistance Clients Utilisateurs en Base
+-- Persistance Clients Utilisateurs en Base.............................................................................................................................................
 
 INSERT INTO Utilisateur (id, is_admin,  pseudo, email) VALUES (1, false, 'Nguma', 'nzola@ngando.fr');
-INSERT INTO Client (id, nom, prenom, num_compte, nb_commandes) VALUES (1, 'Abdoulaye', 'Nzola', '200518NA', 20);
+INSERT INTO Client (id, nom, prenom, numClient) VALUES (1, 'Abdoulaye', 'Nzola', '200518NA');
 
+-- Persistance Utilisaturs Admins Base de données.......................................................................................................................................
 
 INSERT INTO Utilisateur (id, is_admin,  pseudo, email) VALUES (2, true, 'GegorMan', 'gegor@man.fr');
 INSERT INTO Admin (id, niv_Acces) VALUES (2, 'Super Admin');
