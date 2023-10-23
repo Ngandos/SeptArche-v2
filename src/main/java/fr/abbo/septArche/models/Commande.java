@@ -19,19 +19,23 @@ public class Commande {
     private Client client;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "commande")
     private List<LigneCommande> contenu = new ArrayList<>();
-    Date dateCommande;
+    private Date dateCommande;
     String status;
+
     public Commande(){}
+
     public Commande(String status, Client client) {
         this.dateCommande = new Date();
         this.status = status;
         this.client = client;
     }
+
     public void ajoutLigneCommande(Articles article, int qte) {
         LigneCommande ligneCommande = new LigneCommande(article, qte);
         contenu.add(ligneCommande);
         ligneCommande.setCommande(this);
     }
+
     public Long getId() {
         return id;
     }
@@ -63,6 +67,7 @@ public class Commande {
     public void setStatus(String status) {
         this.status = status;
     }
+
     @Override
     public String toString() {
         return "Commande {" + "id =" + id + "Client =" + client +", contenu =" + contenu + ", dateCommande =" + new Date() +
