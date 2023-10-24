@@ -1,7 +1,7 @@
 package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.UserRepository;
-import fr.abbo.septArche.models.Users;
+import fr.abbo.septArche.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,20 +17,8 @@ public class UserController {
     @Autowired
     private UserRepository rep;
 
-
-    /**
-     * Affichage de la liste des utilisateurs.
-     */
-    @GetMapping()
-    public List<Users> findAll() {
-        return rep.findAll();
-    }
-
-    /**
-     * Recherche un utilisateur par son ID.
-     */
     @GetMapping("/{id}")
-    public Optional<Users> findById(@PathVariable Long id) {
+    public Optional<User> findById(@PathVariable Long id) {
         return rep.findById(id);
     }
 
@@ -38,7 +26,7 @@ public class UserController {
      * Recherche un utilisateur par son nom utilisateur.
      */
     @GetMapping("/username")
-    public Users findByUsername(@RequestParam String username) {
+    public User findByUsername(@RequestParam String username) {
         return rep.findByUsername(username);
     }
 
@@ -46,7 +34,7 @@ public class UserController {
      * Recherche un utilisateur par son Email.
      */
     @GetMapping("/email")
-    public Users findByEmail(@RequestParam String email) {
+    public User findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
     }
 
@@ -54,8 +42,8 @@ public class UserController {
      * Methode de persistence d'un utilisateur.
      */
     @PostMapping("/save")
-    public ResponseEntity<Users> createUser(@RequestBody Users user) {
-        Users createdUser = rep.save(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = rep.save(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 }

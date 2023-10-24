@@ -1,6 +1,6 @@
 package fr.abbo.septArche.controllers;
 
-import fr.abbo.septArche.models.Users;
+import fr.abbo.septArche.models.User;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,17 +16,17 @@ public class AuthentificationController {
      * Dans le cas ou l'utilisateur n'existerais pas on redirigerait vers la page de création de compte.
      */
     @PostMapping()
-    public Users login(@RequestBody Users users) {
+    public User login(@RequestBody User user) {
 
         /**
          * Une fois authentifier nous rentrions dans cette méthode dans le cas contraire Spring Sécurity refusera
          * la connexion et procedera comme indiqué ci-dessus.
          */
-        System.out.println("login de : " + users.getUsername());
+        System.out.println("login de : " + user.getUsername());
 
         /**
          * La méthode retourne l'objet l'Utilisateur connécté pour indiquer à REACT que celui-ci est bien connecté.
          */
-        return users;
+        return user;
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "username")
-public class Client extends Users {
+public class Client extends User {
     @OneToMany
     private List<Adresses> adresses = new ArrayList<>();
     @OneToMany

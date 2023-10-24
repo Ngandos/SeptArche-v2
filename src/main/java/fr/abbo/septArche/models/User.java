@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public class Users {
+public class User {
 
     @Id
     private String username;
@@ -15,9 +15,9 @@ public class Users {
     private String password;
     private boolean enabled=true;
 
-    public Users() {}
+    public User() {}
 
-    public Users(String username, String email, String password) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -50,7 +50,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "User{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
