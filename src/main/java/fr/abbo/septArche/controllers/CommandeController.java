@@ -18,15 +18,15 @@ public class CommandeController {
     @Autowired
     private ClientsRepository repClient;
     @Autowired
-    private CommandeServices repCommandeServices;
+    private CommandeServices commandeServices;
 
     @GetMapping()
     public List<Commande> findAll() {
-        return repCommandeServices.findAll();
+        return commandeServices.findAll();
     }
     @GetMapping(path = "/{id}")
     public Optional<Commande> findById(@PathVariable Long id) {
-        return repCommandeServices.findById(id);
+        return commandeServices.findById(id);
     }
     @GetMapping(params = {"dateCommande"})
     public Commande findByDateCommande(@RequestParam String dateCommande) {
@@ -36,8 +36,8 @@ public class CommandeController {
     public  Commande findByClient(@RequestParam Long idClient) {
         return rep.findByClient(idClient);
     }
-    /*@PostMapping("/creerCommande")
+    @PostMapping("/creerCommande")
     public Commande creerCommande(@RequestBody Commande commande) throws Exception {
-        return repCommandeServices.creerCommande(commande);
-    }*/
+        return commandeServices.creerCommande(commande);
+    }
 }
