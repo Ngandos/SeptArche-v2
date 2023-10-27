@@ -1,4 +1,19 @@
---Tables pour Spring Security
+DROP TABLE IF EXISTS dbuser;
+
+CREATE TABLE dbuser (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  username VARCHAR(250) NOT NULL,
+  password VARCHAR(250) NOT NULL,
+  role VARCHAR(250) NOT NULL
+);
+
+--DataBase Users Petsistance________________________________________________________________________________________
+
+INSERT INTO DbUser (username, password, role) VALUES
+('dbuser', '$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.', 'USER'),
+('dbadmin', '$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC', 'ADMIN');
+
+--Tables pour Spring Security______________________________________________________________________________________
 
 create table authorities (
     username varchar(50) not null,
@@ -123,12 +138,12 @@ INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Popi', 'Popi', '
 
 --Persistance Commands Embedded Objects................................................................................
 
-INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
+--INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
 
 -- Persistance LigneCommands Embedded Objects
 
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1);
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4);
+--INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1);
+--INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4);
 
 
 

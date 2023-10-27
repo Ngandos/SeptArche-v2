@@ -13,57 +13,72 @@ public class Commande {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     /*@JoinColumn(name = "idClient")
     @OneToOne()
     private Client client;*/
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "commande")
     private List<LigneCommande> contenu = new ArrayList<>();
-    Date dateCommande;
-    String status;
+    private String numComm;
+    private Date dateComm;
+    private String status;
     public Commande(){}
-    public Commande(String status) {
-        this.dateCommande = new Date();
+
+    public Commande(Long id, List<LigneCommande> contenu, String numComm, Date dateComm, String status) {
+        this.id = id;
+        this.contenu = contenu;
+        this.numComm = numComm;
+        this.dateComm = dateComm;
         this.status = status;
     }
-    public void ajoutLigneCommande(Articles article, int qte) {
-        LigneCommande ligneCommande = new LigneCommande(article, qte);
-        contenu.add(ligneCommande);
-        ligneCommande.setCommande(this);
-    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    /*public Client getClient() {
-        return client;
-    }
-    public void setClient(Client client) {
-        this.client = client;
-    }*/
+
     public List<LigneCommande> getContenu() {
         return contenu;
     }
+
     public void setContenu(List<LigneCommande> contenu) {
         this.contenu = contenu;
     }
-    public Date getDateCommande() {
-        return dateCommande;
+
+    public String getNumComm() {
+        return numComm;
     }
-    public void setDateCommande(Date dateCommande) {
-        this.dateCommande = dateCommande;
+
+    public void setNumComm(String numComm) {
+        this.numComm = numComm;
     }
+
+    public Date getDateComm() {
+        return dateComm;
+    }
+
+    public void setDateComm(Date dateComm) {
+        this.dateComm = dateComm;
+    }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
+
     @Override
     public String toString() {
-        return "Commande {" + "id =" + id + ", contenu =" + contenu + ", dateCommande =" + new Date() +
-                ", status =" + status + '}';
+        return "Commande{" +
+                "id=" + id +
+                ", contenu=" + contenu +
+                ", numComm='" + numComm + '\'' +
+                ", dateComm=" + dateComm +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

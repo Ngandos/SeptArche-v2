@@ -12,8 +12,7 @@ import java.util.Optional;
 
 @Service
 public class CommandeServices {
-    @Autowired
-    private LigneCommandeServices repLigneCommande;
+
     @Autowired
     private CommandeRepository repCommande;
 
