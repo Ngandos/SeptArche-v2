@@ -19,6 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import fr.abbo.septArche.Configuration.CustomUserDetailsService;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toStaticResources;
 
 @Configuration
 @EnableWebSecurity
@@ -31,28 +32,43 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors();
         return http.authorizeHttpRequests(auth -> {
+
+        //Admins Rights.........................................................
+
             auth.requestMatchers("/admin").hasRole("ADMIN");
             auth.requestMatchers("/client").hasRole("ADMIN");
+
+        //Users Rights..........................................................
+
             auth.requestMatchers("/user").hasRole("USER");
+
+        //All Access.............................................................
+
             auth.requestMatchers("/articles").permitAll();
+            auth.requestMatchers("/livres").permitAll();
             auth.requestMatchers("/login").permitAll();
             auth.requestMatchers("/categorie").permitAll();
+            auth.requestMatchers("/commande").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/commande").permitAll();
+
             auth.requestMatchers(toH2Console());
-            auth.anyRequest().authenticated();
+            auth.anyRequest().permitAll();
         }).formLogin(Customizer.withDefaults()).build();
     }
 
     @Bean
     public UserDetailsService users() {
+
         UserDetails user = User.builder()
             .username("user")
             .password(passwordEncoder().encode("user"))
             .roles("USER").build();
         UserDetails admin = User.builder()
+
             .username("admin")
             .password(passwordEncoder().encode("admin"))
             .roles("USER", "ADMIN").build();
+
         return new InMemoryUserDetailsManager(user, admin);
     }
 
@@ -60,9 +76,9 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder)
         throws Exception {
             AuthenticationManagerBuilder authenticationManagerBuilder =
-                    http.getSharedObject(AuthenticationManagerBuilder.class);
+                http.getSharedObject(AuthenticationManagerBuilder.class);
             authenticationManagerBuilder.userDetailsService(customUserDetailsService)
-                    .passwordEncoder(bCryptPasswordEncoder);
+                .passwordEncoder(bCryptPasswordEncoder);
             return authenticationManagerBuilder.build();
     }
 
