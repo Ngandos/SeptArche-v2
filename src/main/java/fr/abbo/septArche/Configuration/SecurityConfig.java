@@ -36,11 +36,11 @@ public class SecurityConfig {
         //Admins Rights.........................................................
 
             auth.requestMatchers("/admin").hasRole("ADMIN");
-            auth.requestMatchers("/client").hasRole("ADMIN");
+            auth.requestMatchers("/client").permitAll();
 
         //Users Rights..........................................................
 
-            auth.requestMatchers("/user").hasRole("USER");
+            auth.requestMatchers("/user").permitAll();
 
         //All Access.............................................................
 
@@ -50,6 +50,7 @@ public class SecurityConfig {
             auth.requestMatchers("/categorie").permitAll();
             auth.requestMatchers("/commande").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/commande").permitAll();
+            auth.requestMatchers(HttpMethod.POST,"/user").permitAll();
 
             auth.requestMatchers(toH2Console());
             auth.anyRequest().permitAll();

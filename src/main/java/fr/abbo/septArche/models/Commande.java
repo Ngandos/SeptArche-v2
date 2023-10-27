@@ -73,7 +73,7 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" +
+        return "Commande {" +
                 "id=" + id +
                 ", contenu=" + contenu +
                 ", numComm='" + numComm + '\'' +

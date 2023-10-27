@@ -136,14 +136,18 @@ INSERT INTO Users (username, email, password, enabled) VALUES ('Popi', 'Popilele
 INSERT INTO authorities (username, authority) VALUES ('Popi', 'ROLE_USER');
 INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Popi', 'Popi', 'Popilele', 'ACCU263456');
 
+INSERT INTO Users (username, email, password, enabled) VALUES ('Nzola', 'nzola@gmail.fr', '200518', true);
+INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Nzola', 'Abdoulaye', 'Zolana', 'ACCU256389');
+
 --Persistance Commands Embedded Objects................................................................................
 
---INSERT INTO Commande (id, date_commande, status ) VALUES (1, '2023-07-19', 'Términée');
+INSERT INTO Commande (id, num_Comm, date_Comm, status) VALUES (1, '00001', '2023-07-19', 'Términée');
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1);
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4);
 
--- Persistance LigneCommands Embedded Objects
-
---INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1);
---INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4);
+INSERT INTO Commande (id, num_Comm, date_Comm, status) VALUES (2, '00002', '2023-10-19', 'Términée');
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (3, 2, 10, 5);
+INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (4, 2, 9, 10);
 
 
 
