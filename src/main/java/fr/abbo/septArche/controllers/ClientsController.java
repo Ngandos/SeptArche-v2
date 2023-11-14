@@ -1,6 +1,8 @@
 package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.ClientsRepository;
+import fr.abbo.septArche.Services.ClientService;
+import fr.abbo.septArche.exceptions.ClientExceptions;
 import fr.abbo.septArche.models.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +16,20 @@ public class ClientsController {
     @Autowired
     private ClientsRepository rep;
 
+    @Autowired
+    private ClientService clientService;
+
     /**
      * Recherche les Clients et retourne une liste de clients.
      */
     @GetMapping()
     public List<Client> findAll() {
         return rep.findAll();
+    }
+
+    @GetMapping(params = {"username"})
+    public Client findByUsername(@RequestParam String username) {
+        return rep.findByUsername(username);
     }
 
     /**
@@ -32,4 +42,21 @@ public class ClientsController {
         return rep.findByNom(nom);
     }
 
+    @GetMapping(params = {"email"})
+    public Client findByEmail(@RequestParam String email) {
+        return rep.findByEmail(email);
+    }
+
+    @PostMapping()
+    public String creerClient(@RequestBody Client client ) throws ClientExceptions {
+        try {
+            clientService.creerClient(client);
+
+            return "Utilisateur Enregistré";
+
+        } catch (ClientExceptions e) {
+
+            return "Erreur lors de l'enregistrement";
+        }
+    }
 }

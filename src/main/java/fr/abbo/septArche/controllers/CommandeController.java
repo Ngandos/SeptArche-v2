@@ -4,6 +4,7 @@ import fr.abbo.septArche.DAO.ClientsRepository;
 import fr.abbo.septArche.DAO.CommandeRepository;
 import fr.abbo.septArche.Services.CommandeServices;
 import fr.abbo.septArche.exceptions.StockExceptions;
+import fr.abbo.septArche.models.Cart;
 import fr.abbo.septArche.models.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/commande")
 public class CommandeController {
@@ -27,7 +28,7 @@ public class CommandeController {
      */
     @GetMapping()
     public List<Commande> findAll() {
-        return commandeServices.findAll();
+        return rep.findAll();
     }
 
     /**
@@ -35,7 +36,7 @@ public class CommandeController {
      */
     @GetMapping(path = "/{id}")
     public Optional<Commande> findById(@PathVariable Long id) {
-        return commandeServices.findById(id);
+        return rep.findById(id);
     }
 
     /**
@@ -48,6 +49,9 @@ public class CommandeController {
 
     @PostMapping()
     public String creerCommande(@RequestBody Commande commande ) {
+
+        System.out.print("Commande " + commande);
+
         try {
             commandeServices.creerCommande(commande);
             return "Commandé validée";

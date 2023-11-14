@@ -1,6 +1,9 @@
 package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.UserRepository;
+import fr.abbo.septArche.Services.UsersServices;
+import fr.abbo.septArche.exceptions.StockExceptions;
+import fr.abbo.septArche.models.Commande;
 import fr.abbo.septArche.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +15,13 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="/user")
+@RequestMapping(path="/users")
 public class UserController {
     @Autowired
     private UserRepository rep;
+
+    @Autowired
+    private UsersServices usersServices;
 
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable Long id) {
@@ -25,7 +31,7 @@ public class UserController {
     /**
      * Recherche un utilisateur par son nom utilisateur.
      */
-    @GetMapping("/username")
+    @GetMapping("username")
     public User findByUsername(@RequestParam String username) {
         return rep.findByUsername(username);
     }
@@ -33,17 +39,26 @@ public class UserController {
     /**
      * Recherche un utilisateur par son Email.
      */
-    @GetMapping("/email")
+    @GetMapping("email")
     public User findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
+    }
+
+    @GetMapping("role")
+    public User findByRole(@RequestParam String role) {
+        return rep.findByRole(role);
     }
 
     /**
      * Methode de persistence d'un utilisateur.
      */
-    @PostMapping("/save")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = rep.save(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    @PostMapping()
+    public String creerUser(@RequestBody User user ) {
+        try {
+            usersServices.creerUser(user);
+            return "Utilisateur Enregistré";
+        } catch (StockExceptions e) {
+            return "Erreur lors de l'enregistrement de l'utilisateur";
+        }
     }
 }

@@ -16,14 +16,19 @@ public class Commande {
     /*@JoinColumn(name = "idClient")
     @OneToOne()
     private Client client;*/
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "commande")
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "id")
     private List<LigneCommande> contenu = new ArrayList<>();
-    private String numComm;
+    private Integer numComm;
     private Date dateComm;
     private String status;
+    private float prixHT;
+    private double tva = 0.2;
+    @Transient
+    private double prixTTC = prixHT * (1 + tva);
+    private double tvaCom = prixTTC * (1 - prixHT);
     public Commande(){}
 
-    public Commande(Long id, List<LigneCommande> contenu, String numComm, Date dateComm, String status) {
+    public Commande(Long id, List<LigneCommande> contenu, Integer numComm, Date dateComm, String status) {
         this.id = id;
         this.contenu = contenu;
         this.numComm = numComm;
@@ -47,11 +52,11 @@ public class Commande {
         this.contenu = contenu;
     }
 
-    public String getNumComm() {
+    public Integer getNumComm() {
         return numComm;
     }
 
-    public void setNumComm(String numComm) {
+    public void setNumComm(Integer numComm) {
         this.numComm = numComm;
     }
 
@@ -71,14 +76,41 @@ public class Commande {
         this.status = status;
     }
 
+    public float getPrixHT() {
+        return prixHT;
+    }
+
+    public void setPrixHT(float prixHT) {
+        this.prixHT = prixHT;
+    }
+
+    public double getTva() {
+        return tva;
+    }
+
+    public void setTva(double tva) {
+        this.tva = tva;
+    }
+
+    public double getPrixTTC() {
+        return prixTTC;
+    }
+
+    public void setPrixTTC(double prixTTC) {
+        this.prixTTC = prixTTC;
+    }
+
     @Override
     public String toString() {
-        return "Commande {" +
+        return "Commande{" +
                 "id=" + id +
                 ", contenu=" + contenu +
-                ", numComm='" + numComm + '\'' +
+                ", numComm=" + numComm +
                 ", dateComm=" + dateComm +
                 ", status='" + status + '\'' +
+                ", prixHT=" + prixHT +
+                ", tva=" + tva +
+                ", prixTTC=" + prixTTC +
                 '}';
     }
 }

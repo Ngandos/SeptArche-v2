@@ -1,30 +1,17 @@
-DROP TABLE IF EXISTS dbuser;
-
-CREATE TABLE dbuser (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  username VARCHAR(250) NOT NULL,
-  password VARCHAR(250) NOT NULL,
-  role VARCHAR(250) NOT NULL
-);
+--DROP TABLE IF EXISTS dbuser;
+--
+--CREATE TABLE dbuser (
+--  id INT AUTO_INCREMENT  PRIMARY KEY,
+--  username VARCHAR(250) NOT DROP
+--  password VARCHAR(250) NOT NULL,
+--  role VARCHAR(250) NOT NULL
+--);
 
 --DataBase Users Petsistance________________________________________________________________________________________
 
 INSERT INTO DbUser (username, password, role) VALUES
 ('dbuser', '$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.', 'USER'),
 ('dbadmin', '$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC', 'ADMIN');
-
---Tables pour Spring Security______________________________________________________________________________________
-
-create table authorities (
-    username varchar(50) not null,
-    authority varchar(50) not null,
-    foreign key (username) references users (username)
-);
-
-CREATE UNIQUE INDEX ix_auth_username
-  on authorities (username,authority);
-
-
 
 --Categories Persistence................................................................................................
 
@@ -35,21 +22,21 @@ INSERT INTO Categorie (id, nom, description) VALUES (4, 'Goodies', 'Objets & Acc
 
 -- Persistance Auteurs..................................................................................................
 
-INSERT INTO Auteurs (id, nom) VALUES (1, 'Victor Hugo');
-INSERT INTO auteurs (id, nom) VALUES (2, 'Charles Baudelaire');
-INSERT INTO auteurs (id, nom) VALUES (3, 'Anne Rice');
-INSERT INTO auteurs (id, nom) VALUES (4, 'Jean Baptiste Poquelin');
-INSERT INTO auteurs (id, nom) VALUES (5, 'Mark Twain');
-INSERT INTO auteurs (id, nom) VALUES (6, 'Jules Vernes');
-INSERT INTO auteurs (id, nom) VALUES (7, 'Tolkien');
-INSERT INTO auteurs (id, nom) VALUES (8, 'Yann Martel');
-INSERT INTO auteurs (id, nom) VALUES (9, 'Pierre Boulle');
-INSERT INTO auteurs (id, nom) VALUES (10, 'Georges RR Martin');
-INSERT INTO auteurs (id, nom) VALUES (11, 'Thomas Harris');
-INSERT INTO auteurs (id, nom) VALUES (12, 'Philipp K Dick');
-INSERT INTO auteurs (id, nom) VALUES (13, 'Steves Kloves');
-INSERT INTO auteurs (id, nom) VALUES (14, 'Tite Kubo');
-INSERT INTO auteurs (id, nom) VALUES (15, 'Chris Evans');
+INSERT INTO Auteurs (id, nom, prenom) VALUES (1, 'Victor', 'Hugo');
+INSERT INTO auteurs (id, nom, prenom) VALUES (2, 'Charles', 'Baudelaire');
+INSERT INTO auteurs (id, nom, prenom) VALUES (3, 'Anne', 'Rice');
+INSERT INTO auteurs (id, nom, prenom) VALUES (4, 'Jean Baptiste', 'Poquelin');
+INSERT INTO auteurs (id, nom, prenom) VALUES (5, 'Mark', 'Twain');
+INSERT INTO auteurs (id, nom, prenom) VALUES (6, 'Jules', 'Vernes');
+INSERT INTO auteurs (id, nom, prenom) VALUES (7, '', 'Tolkien');
+INSERT INTO auteurs (id, nom, prenom) VALUES (8, 'Yann', 'Martel');
+INSERT INTO auteurs (id, nom, prenom) VALUES (9, 'Pierre', 'Boulle');
+INSERT INTO auteurs (id, nom, prenom) VALUES (10, 'Georges RR', 'Martin');
+INSERT INTO auteurs (id, nom, prenom) VALUES (11, 'Thomas', 'Harris');
+INSERT INTO auteurs (id, nom, prenom) VALUES (12, 'Philipp', 'KK Dick');
+INSERT INTO auteurs (id, nom, prenom) VALUES (13, 'Steves', 'Kloves');
+INSERT INTO auteurs (id, nom, prenom) VALUES (14, 'Tite', 'Kubo');
+INSERT INTO auteurs (id, nom, prenom) VALUES (15, 'Chris', 'Evans');
 
 -- Persistance Editeurs.................................................................................................
 
@@ -106,48 +93,39 @@ INSERT INTO Adresses (id, num_rue, rue, code_postal, ville, pays) VALUES (1, 12,
 
 --Insertion Users Roles Admins dans les tables Users et Authorities......................................................
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Nguma', 'nzola@ngando.fr', '1234', 0);
-INSERT INTO authorities (username, authority) VALUES ('Nguma', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (1, 'Nguma', 'nzola@ngando.fr', '1234', 0, 'ADMIN');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Neh', 'kimia@ngando.fr', '5678', 0);
-INSERT INTO authorities (username, authority) VALUES ('Neh', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (2, 'Neh', 'kimia@ngando.fr', '5678', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Innoss', 'inoss@molodoi.fr', '9101112', true);
-INSERT INTO authorities (username, authority) VALUES ('Innoss', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (3, 'Innoss', 'inoss@molodoi.fr', '9101112', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Aigle', 'Ipupa@tokosss.fr', '131415', true);
-INSERT INTO authorities (username, authority) VALUES ('Aigle', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (4, 'Aigle', 'Ipupa@tokosss.fr', '131415', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('GegorMan', 'gegor@man.fr', '161718', true);
-INSERT INTO authorities (username, authority) VALUES ('GegorMan', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (5, 'GegorMan', 'gegor@man.fr', '161718', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Jeff', 'jloyd.ba@gmail.fr', '192021', true);
-INSERT INTO authorities (username, authority) VALUES ('Jeff', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (6, 'Jeff', 'jloyd.ba@gmail.fr', '192021', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Ngando', 'ngando.ba@gmail.fr', '222324', true);
-INSERT INTO authorities (username, authority) VALUES ('Ngando', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (7, 'Ngando', 'ngando.ba@gmail.fr', '222324', true, 'USER');
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Likoko', 'mokokoli@gmail.fr', '252627', true);
-INSERT INTO authorities (username, authority) VALUES ('Likoko', 'ROLE_ADMIN');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (8, 'Likoko', 'mokokoli@gmail.fr', '252627', true, 'USER');
 
 --Insertion Users Roles Clients dans les table Clients et Authorities...................................................
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Popi', 'Popilele@gmail.fr', '170990', true);
-INSERT INTO authorities (username, authority) VALUES ('Popi', 'ROLE_USER');
-INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Popi', 'Popi', 'Popilele', 'ACCU263456');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (9, 'Popi', 'popilele@gmail.fr', '170990', true, 'USER');
+INSERT INTO Client (username, nom, prenom, numCompte, email, password) VALUES ('Popi', 'Popilele', 'Maev', 'ACCU263456', 'Popilele@gmail.fr', '170990' );
 
-INSERT INTO Users (username, email, password, enabled) VALUES ('Nzola', 'nzola@gmail.fr', '200518', true);
-INSERT INTO Client (username, nom, prenom, num_compte) VALUES ('Nzola', 'Abdoulaye', 'Zolana', 'ACCU256389');
+INSERT INTO Users (id, username, email, password, enabled, role) VALUES (10,'Zolana', 'nzola@gmail.fr', '200518', true, 'USER');
+INSERT INTO Client (username, nom, prenom, numCompte, email, pasword) VALUES ('Zolana', 'Abdoulaye', 'Nzola', 'ACCU256389', 'nzola@gmail.fr', '200518');
 
 --Persistance Commands Embedded Objects................................................................................
 
-INSERT INTO Commande (id, num_Comm, date_Comm, status) VALUES (1, '00001', '2023-07-19', 'Términée');
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (1, 1, 8, 1);
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (2, 1, 12, 4);
+--INSERT INTO Commande (id, contenu, numComm, dateComm, status) VALUES (1, '[ contenu: {"id": "1", "commande_id": "1", "article_id": "8", "quantité": "1" },{"id": "2", "commande_id": "1", "article_id": "12", "quantité": "4"}]', '00001', '2023-07-19', 'Términée');
+--INSERT INTO LigneCommande (id, commandes_id, article_id, quantite) VALUES (1, 1, 8, 1);
+--INSERT INTO LigneCommande (id, commandes_id, article_id, quantite) VALUES (2, 1, 12, 4);
 
-INSERT INTO Commande (id, num_Comm, date_Comm, status) VALUES (2, '00002', '2023-10-19', 'Términée');
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (3, 2, 10, 5);
-INSERT INTO Ligne_Commande (id, commande_id, article_id, quantite) VALUES (4, 2, 9, 10);
+--INSERT INTO Commande (id, contenu, numComm, dateComm, status) VALUES (2, '[ contenu: {"id": "3", "commande_id": "2", "article_id": "10", "quantité": "1" },{"id": "4", "commande_id": "2", "article_id": "9", "quantité": "10"}]', '00002', '2023-10-19', 'Términée');
+--INSERT INTO LigneCommande (id, commande_id, article_id, quantite) VALUES (3, 2, 10, 5);
+--INSERT INTO LigneCommande (id, commande_id, article_id, quantite) VALUES (4, 2, 9, 10);
 
 
 

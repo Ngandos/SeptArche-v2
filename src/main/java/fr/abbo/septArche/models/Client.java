@@ -17,19 +17,30 @@ public class Client extends User {
     private String prenom;
     private String numCompte;
 
-    public Client(){}
+    public Client() {
+    }
 
-    public Client(String nom, String prenom, String numCompte) {
+    public Client(Long id, String username, String nom, String prenom, String numCompte, String email, String password, String role) {
+        super(id, username, email, password, role);
+        this.username = username;
         this.nom = nom;
         this.prenom = prenom;
         this.numCompte = numCompte;
+        this.email = email;
+        this.password = password;
     }
 
     public List<Adresses> getAdresses() {
         return adresses;
     }
-    public void addAdresse(Adresses adresse) {
-        this.adresses.add(adresse);
+    public void setAdresses(List<Adresses> adresses) {
+        this.adresses = adresses;
+    }
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
     public String getNom() {
         return nom;
@@ -49,16 +60,17 @@ public class Client extends User {
     public void setNumCompte(String numCompte) {
         this.numCompte = numCompte;
     }
-
-    public void setAdresses(List<Adresses> adresses) {
-        this.adresses = adresses;
+    public String getEmail() {
+        return email;
     }
-    public List<Commande> getCommandes() {
-        return commandes;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -69,6 +81,8 @@ public class Client extends User {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", numCompte='" + numCompte + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

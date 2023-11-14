@@ -13,6 +13,7 @@ public class SeptArcheApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SeptArcheApplication.class, args);
+
 	}
 
 }

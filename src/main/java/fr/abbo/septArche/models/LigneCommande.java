@@ -8,7 +8,7 @@ public class LigneCommande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
     @ManyToOne
     @JoinColumn(name="article_id")
     private Articles article;
@@ -19,33 +19,51 @@ public class LigneCommande {
 
     public LigneCommande(){}
 
-    public LigneCommande(Articles article, int quantite) {
+    public LigneCommande(int id, Articles article, int quantite) {
+        this.id = id;
         this.article = article;
         this.quantite = quantite;
     }
-    public Long getId() {
+
+    public int getId() {
         return id;
     }
-    public void setId(Long id) {
+
+    public void setId(int id) {
         this.id = id;
     }
-    public Articles getArticles() {
+
+    public Articles getArticle() {
         return article;
     }
-    public void setArticles(Articles article) {
+
+    public void setArticle(Articles article) {
         this.article = article;
     }
+
     public int getQuantite() {
         return quantite;
     }
+
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
     public void setCommande(Commande commande) {
         this.commande = commande;
     }
+
     @Override
     public String toString() {
-        return "LigneCommande{" + "id=" + id + ", article=" + article + ", quantite=" + quantite + '}';
+        return "LigneCommande{" +
+                "id=" + id +
+                ", article=" + article +
+                ", quantite=" + quantite +
+                ", commande=" + commande +
+                '}';
     }
 }

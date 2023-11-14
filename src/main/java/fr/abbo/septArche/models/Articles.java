@@ -13,7 +13,7 @@ public class Articles {
     @Column(name = "ref", nullable =  false, length = 30, unique = true)
     private String ref;
     private String designation;
-    private String category;
+    private String categorie;
     private double prixHT;
     private double tva = 0.2;
     @Transient
@@ -22,7 +22,7 @@ public class Articles {
     // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
+        @AttributeOverride( name = "nombre", column = @Column(name = "stock"))
     })
     private Stock stock;
     @ManyToOne()
@@ -31,11 +31,11 @@ public class Articles {
 
     protected Articles(){}
 
-    public Articles(Long id, String category, double prixHT, String ref, String designation, double prixTTC) {
+    public Articles(Long id, String categorie, double prixHT, String ref, String designation, double prixTTC) {
         this.id = id;
         this.ref = ref;
         this.designation = designation;
-        this.category = category;
+        this.categorie = categorie;
         this.prixHT = prixHT;
         this.stock = new Stock();
         this.prixTTC = prixTTC;
@@ -64,11 +64,11 @@ public class Articles {
     public void setStock(Stock stock) {
         this.stock = stock;
     }
-    public String getCategory() {
-        return category;
+    public String getCategorie() {
+        return categorie;
     }
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
     }
     public double getPrixHT() {
         return prixHT;
@@ -94,7 +94,7 @@ public class Articles {
     @Override
     public String toString() {
         return "Articles{" +
-                "id = " + id + ", ref='" + ref + ", designation='" + designation + ", category='" + category +
+                "id = " + id + ", ref='" + ref + ", designation='" + designation + ", categorie='" + categorie +
                 ", prixHT=" + prixHT + ", tva=" + tva + ", prixTTC = " + prixTTC + ", stock=" + stock +
                 ", vendeur=" + vendeur + '}';
     }

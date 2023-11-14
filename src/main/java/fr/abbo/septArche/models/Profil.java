@@ -2,8 +2,8 @@ package fr.abbo.septArche.models;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "profil")
+/*@Entity
+@Table(name = "profil")*/
 public class Profil {
 
     @Id

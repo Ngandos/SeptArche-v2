@@ -1,6 +1,6 @@
 package fr.abbo.septArche.Configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,15 +16,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import fr.abbo.septArche.Configuration.CustomUserDetailsService;
 
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toStaticResources;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity*/
 public class SecurityConfig {
-
+/*
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
@@ -40,7 +38,7 @@ public class SecurityConfig {
 
         //Users Rights..........................................................
 
-            auth.requestMatchers("/user").permitAll();
+            auth.requestMatchers("/user").hasRole("USER");
 
         //All Access.............................................................
 
@@ -48,12 +46,12 @@ public class SecurityConfig {
             auth.requestMatchers("/livres").permitAll();
             auth.requestMatchers("/login").permitAll();
             auth.requestMatchers("/categorie").permitAll();
-            auth.requestMatchers("/commande").permitAll();
+            auth.requestMatchers("/commande/**").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/commande").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/user").permitAll();
 
             auth.requestMatchers(toH2Console());
-            auth.anyRequest().permitAll();
+            auth.anyRequest().authenticated();
         }).formLogin(Customizer.withDefaults()).build();
     }
 
@@ -64,8 +62,8 @@ public class SecurityConfig {
             .username("user")
             .password(passwordEncoder().encode("user"))
             .roles("USER").build();
-        UserDetails admin = User.builder()
 
+        UserDetails admin = User.builder()
             .username("admin")
             .password(passwordEncoder().encode("admin"))
             .roles("USER", "ADMIN").build();
@@ -86,6 +84,6 @@ public class SecurityConfig {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }*/
 }
 

@@ -2,6 +2,7 @@ package fr.abbo.septArche.controllers;
 
 import fr.abbo.septArche.DAO.ArticlesRepository;
 import fr.abbo.septArche.models.Articles;
+import fr.abbo.septArche.models.Livres;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,11 @@ import java.util.Optional;
         @GetMapping(params = {"designation"})
         public Articles findByDesignation(@RequestParam String designation) {
             return rep.findByDesignation(designation);
+        }
+
+        @GetMapping(params = {"categorie"})
+        public Articles findByCategorie(@RequestParam String categorie) {
+            return rep.findByCategorie(categorie);
         }
 
         /**
