@@ -8,10 +8,8 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface EditeursRepository extends JpaRepository<Editeurs, Long> {
-    default List<Editeurs> findAll() {
-        return null;
-    }
-
+    @Override
+    List<Editeurs> findAll();
     Optional<Editeurs> findById(Long id);
-    Editeurs findByEnseigne(String enseigne);
+    Editeurs findByEnseigne(String ref);
 }

@@ -10,14 +10,11 @@ import java.util.Optional;
 @Repository
 public interface AdressesRepository extends JpaRepository<Adresses, Long> {
 
+    @Override
     List<Adresses> findAll();
     Optional<Adresses> findById(Long id);
-    default Adresses findByRue(String rue) {
-        return null;
-    }
-    default Adresses findByClients(String clients) {
-        return null;
-    }
+    Adresses findByRue(String rue);
+    Adresses findByCodePostal(String codePostal);
 
 
 }
