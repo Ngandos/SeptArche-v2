@@ -8,7 +8,7 @@ public class LigneCommande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
     @ManyToOne
     @JoinColumn(name="article_id")
     private Articles article;
@@ -19,17 +19,17 @@ public class LigneCommande {
 
     public LigneCommande(){}
 
-    public LigneCommande(int id, Articles article, int quantite) {
+    public LigneCommande(Long id, Articles article, int quantite) {
         this.id = id;
         this.article = article;
         this.quantite = quantite;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

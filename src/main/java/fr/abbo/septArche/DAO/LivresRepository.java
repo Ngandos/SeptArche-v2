@@ -14,5 +14,7 @@ public interface LivresRepository extends JpaRepository<Livres, Long> {
     Livres findByAuteur(String auteur);
     Livres findByEditeur(String editeur);
     Livres findByIsbn(String isbn);
+    List<Livres> findByTitreContainingIgnoreCase(String query);
+
 
 }

@@ -45,8 +45,8 @@ public class LigneCommandeServices {
      * l'application renverra notre message d'exception stock insufisant
      */
     @Transactional(rollbackFor = StockExceptions.class)
-    public void creerLigneCommande(Articles articles, int qte) throws StockExceptions {
-        LigneCommande LigneCommande = new LigneCommande();
-        repLigneCommande.creerLigneCommande(articles, qte);
+    public void creerLigneCommande(Articles article, int qte) throws StockExceptions {
+        LigneCommande ligneCommande = new LigneCommande();
+        repLigneCommande.creerLigneCommande(article, qte);
     }
 }

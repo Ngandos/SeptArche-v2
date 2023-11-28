@@ -26,6 +26,7 @@ public class Commande {
     @Transient
     private double prixTTC = prixHT * (1 + tva);
     private double tvaCom = prixTTC * (1 - prixHT);
+
     public Commande(){}
 
     public Commande(Long id, List<LigneCommande> contenu, Integer numComm, Date dateComm, String status) {

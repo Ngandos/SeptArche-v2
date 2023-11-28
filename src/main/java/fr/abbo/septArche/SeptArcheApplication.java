@@ -23,6 +23,8 @@ public class SeptArcheApplication {
 		System.setProperty("logging.level.root", "INFO");
 		System.setProperty("spring.jpa.defer-datasource-initialization", "true");
 		System.setProperty("logging.level.fr.abbo.septArche", "DEBUG");
+		System.setProperty("management.endpoints.web.exposure.include", "*");
+
 
 		SpringApplication.run(SeptArcheApplication.class, args);
 

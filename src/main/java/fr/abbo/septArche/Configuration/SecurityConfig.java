@@ -47,6 +47,7 @@ public class SecurityConfig {
             auth.requestMatchers("/login").permitAll();
             auth.requestMatchers("/categorie").permitAll();
             auth.requestMatchers("/commande/**").permitAll();
+            auth.requestMatchers("/search/**").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/commande").permitAll();
             auth.requestMatchers(HttpMethod.POST,"/user").permitAll();
 

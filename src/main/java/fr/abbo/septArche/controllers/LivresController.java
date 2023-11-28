@@ -3,12 +3,15 @@ package fr.abbo.septArche.controllers;
 import fr.abbo.septArche.DAO.LivresRepository;
 import fr.abbo.septArche.models.Livres;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping(path="/livres")
 public class LivresController {
@@ -27,8 +30,9 @@ public class LivresController {
      * Recherche un Livre par son ID.
      */
     @GetMapping("/{id}")
-    public Optional<Livres> findById(@PathVariable Long id) {
-        return rep.findById(id);
+    public ResponseEntity<Optional<Livres>> findById(@PathVariable Long id) {
+        Optional<Livres> livre = rep.findById(id);
+        return ResponseEntity.ok(livre);
     }
 
     /**
@@ -61,5 +65,20 @@ public class LivresController {
     @GetMapping(params = {"isbn"})
     public Livres findByIsbn(@RequestParam String isbn) {
         return rep.findByIsbn(isbn);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Livres>> searchLivres(@RequestParam String query) {
+        System.out.println("Received search query for Livres: " + query);
+
+        try {
+            // Search by titre for Livres
+            List<Livres> livreResults = rep.findByTitreContainingIgnoreCase(query);
+
+            return new ResponseEntity<>(livreResults, HttpStatus.OK);
+        } catch (DataAccessException e) {
+            // Handle specific data access exception
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
