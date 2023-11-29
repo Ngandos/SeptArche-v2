@@ -26,10 +26,6 @@ public interface ArticlesRepository extends JpaRepository<Articles, Long> {
 
     @Query("SELECT a FROM Articles a WHERE a.prixHT > ?1 and a.prixHT < ?2")
     List<Articles> findAllBetweenPrix(double prixMini, double prixMaxi);
-    List<Articles> findByCategorieContainingIgnoreCase(String query);
+    List<Articles> findByDesignationContainingIgnoreCase(String designation);
 
-    /*@Query("SELECT a FROM Articles a WHERE LOWER(a.format) LIKE LOWER(CONCAT('%', :keyword, '%'))")
-    List<Articles> findByKeyword(@Param("keyword") String keyword);*/
-
-//    void saveArticles(Articles article);
 }

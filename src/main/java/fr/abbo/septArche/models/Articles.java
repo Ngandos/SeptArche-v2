@@ -16,7 +16,6 @@ import jakarta.persistence.*;
         private String categorie;
         private double prixHT;
         private double tva = 0.2;
-        @Transient
         private double prixTTC = prixHT * (1 + tva);
 
         // Stock est une classe embedded, sa valeur est insérée dans l'article et il n'y a pas de table associée

@@ -67,18 +67,4 @@ public class LivresController {
         return rep.findByIsbn(isbn);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Livres>> searchLivres(@RequestParam String query) {
-        System.out.println("Received search query for Livres: " + query);
-
-        try {
-            // Search by titre for Livres
-            List<Livres> livreResults = rep.findByTitreContainingIgnoreCase(query);
-
-            return new ResponseEntity<>(livreResults, HttpStatus.OK);
-        } catch (DataAccessException e) {
-            // Handle specific data access exception
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

@@ -1,31 +1,46 @@
 package fr.abbo.septArche.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cart {
-    private long id;
+    private int numComm;
+    private Date dateComm;
+    private String status;
     private List<CartLineItem> contenu = new ArrayList<>();
-    private double prixHT;
-    private double tva;
-    private double prixTTC;
 
     public Cart() {}
 
-    public Cart(long id, List<CartLineItem> contenu, double prixHT, double tva, double prixTTC) {
-        this.id = id;
+    public Cart(int numComm, Date dateComm, String status, List<CartLineItem> contenu) {
+        this.numComm = numComm;
+        this.dateComm = dateComm;
+        this.status = status;
         this.contenu = contenu;
-        this.prixHT = prixHT;
-        this.tva = tva;
-        this.prixTTC = prixTTC;
     }
 
-    public long getId() {
-        return id;
+    public int getNumComm() {
+        return numComm;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setNumComm(int numComm) {
+        this.numComm = numComm;
+    }
+
+    public Date getDateComm() {
+        return dateComm;
+    }
+
+    public void setDateComm(Date dateComm) {
+        this.dateComm = dateComm;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<CartLineItem> getContenu() {
@@ -36,38 +51,13 @@ public class Cart {
         this.contenu = contenu;
     }
 
-    public double getPrixHT() {
-        return prixHT;
-    }
-
-    public void setPrixHT(double prixHT) {
-        this.prixHT = prixHT;
-    }
-
-    public double getTva() {
-        return tva;
-    }
-
-    public void setTva(double tva) {
-        this.tva = tva;
-    }
-
-    public double getPrixTTC() {
-        return prixTTC;
-    }
-
-    public void setPrixTTC(double prixTTC) {
-        this.prixTTC = prixTTC;
-    }
-
     @Override
     public String toString() {
         return "Cart{" +
-                "id=" + id +
+                "numComm=" + numComm +
+                ", dateComm=" + dateComm +
+                ", status='" + status + '\'' +
                 ", contenu=" + contenu +
-                ", prixHT=" + prixHT +
-                ", tva=" + tva +
-                ", prixTTC=" + prixTTC +
                 '}';
     }
 }
