@@ -29,14 +29,14 @@ import jakarta.persistence.*;
 
         protected Articles(){}
 
-        public Articles(Long id, String ref, String designation, String categorie, double prixHT, double tva, double prixTTC, Stock stock, boolean numerique) {
+        public Articles(Long id, String ref, String designation, String categorie, double prixHT, double tva, Stock stock, boolean numerique) {
             this.id = id;
             this.ref = ref;
             this.designation = designation;
             this.categorie = categorie;
             this.prixHT = prixHT;
             this.tva = tva;
-            this.prixTTC = prixTTC;
+            this.prixTTC = prixHT * (1 + tva);
             this.stock = stock;
             this.numerique = numerique;
         }
