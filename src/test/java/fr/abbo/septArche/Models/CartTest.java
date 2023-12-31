@@ -1,10 +1,10 @@
-package fr.abbo.septArche.modelsTests;
+package fr.abbo.septArche.Models;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class CategorieTest {
+    class CartTest {
 
         @Test
         void getId() {
@@ -15,19 +15,27 @@ package fr.abbo.septArche.modelsTests;
         }
 
         @Test
-        void getNom() {
+        void getPrixHT() {
         }
 
         @Test
-        void setNom() {
+        void setPrixHT() {
         }
 
         @Test
-        void getDescription() {
+        void getPrixTTC() {
         }
 
         @Test
-        void setDescription() {
+        void setPrixTTC() {
+        }
+
+        @Test
+        void getTva() {
+        }
+
+        @Test
+        void setTva() {
         }
 
         @Test

@@ -1,10 +1,10 @@
-package fr.abbo.septArche.modelsTests;
+package fr.abbo.septArche.Models;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class EditeursTest {
+    class VendeurTest {
 
         @Test
         void getId() {
@@ -20,6 +20,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
         @Test
         void setEnseigne() {
+        }
+
+        @Test
+        void getSiret() {
+        }
+
+        @Test
+        void setSiret() {
         }
 
         @Test

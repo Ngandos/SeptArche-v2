@@ -29,13 +29,17 @@ public class AuthController {
             String token = authServices.generateToken(username);
 
             // Return the token in the response
+
             Map<String, String> response = new HashMap<>();
+
             response.put("token", token);
 
             return ResponseEntity.ok(response);
         } else {
             // Return an error response if authentication fails
+
             Map<String, String> response = new HashMap<>();
+
             response.put("error", "Invalid credentials");
 
             return ResponseEntity.status(401).body(response);

@@ -1,41 +1,41 @@
-package fr.abbo.septArche.modelsTests;
+package fr.abbo.septArche.Models;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class UtilisateurTest {
+    class LivresTest {
 
         @Test
-        void getId() {
+        void getTitre() {
         }
 
         @Test
-        void setId() {
+        void setTitre() {
         }
 
         @Test
-        void isAdmin() {
+        void getAuteur() {
         }
 
         @Test
-        void setAdmin() {
+        void setAuteur() {
         }
 
         @Test
-        void getPseudo() {
+        void getEditeur() {
         }
 
         @Test
-        void setPseudo() {
+        void setEditeur() {
         }
 
         @Test
-        void getEmail() {
+        void getIsbn() {
         }
 
         @Test
-        void setEmail() {
+        void setIsbn() {
         }
 
         @Test

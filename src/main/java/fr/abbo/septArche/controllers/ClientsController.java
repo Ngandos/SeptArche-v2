@@ -57,7 +57,7 @@ public class ClientsController {
     }
 
     @Autowired
-    private ClientsRepository clientsRepository; // Assuming you have a repository for Clients
+    private ClientsRepository clientsRepository;
 
     @PostMapping("/connect")
     public ResponseEntity<String> connect(@RequestBody Map<String, String> credentials) {
@@ -72,7 +72,11 @@ public class ClientsController {
 
             // Authentication successful
 
-            return ResponseEntity.ok("Authentication successful");
+            // Assuming the server sends back a JWT token in the response
+
+            String token = "your_generated_jwt_token";
+
+            return ResponseEntity.ok("{\"token\": \"" + token + "\"}");
 
         } else {
 
@@ -81,6 +85,4 @@ public class ClientsController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
-
-
 }

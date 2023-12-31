@@ -1,4 +1,4 @@
-package fr.abbo.septArche.modelsTests;
+package fr.abbo.septArche.Models;
 
     import fr.abbo.septArche.exceptions.StockExceptions;
     import fr.abbo.septArche.models.Stock;

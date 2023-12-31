@@ -1,10 +1,10 @@
-package fr.abbo.septArche.modelsTests;
+package fr.abbo.septArche.Models;
 
     import org.junit.jupiter.api.Test;
     import org.springframework.boot.test.context.SpringBootTest;
 
     @SpringBootTest
-    class LigneCommandeTest {
+    class UtilisateurTest {
 
         @Test
         void getId() {
@@ -15,23 +15,27 @@ package fr.abbo.septArche.modelsTests;
         }
 
         @Test
-        void getArticles() {
+        void isAdmin() {
         }
 
         @Test
-        void setArticles() {
+        void setAdmin() {
         }
 
         @Test
-        void getQuantite() {
+        void getPseudo() {
         }
 
         @Test
-        void setQuantite() {
+        void setPseudo() {
         }
 
         @Test
-        void setCommande() {
+        void getEmail() {
+        }
+
+        @Test
+        void setEmail() {
         }
 
         @Test

@@ -1,20 +1,20 @@
 package fr.abbo.septArche.controllers;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.annotations.Test;
 
-    @SpringBootTest
+@SpringBootTest
     public class AdressesControllerTest {
 
-        @Test()
+        @org.testng.annotations.Test()
         public void findAll() {
         }
 
-        @Test()
+        @org.testng.annotations.Test()
         public void findById() {
         }
 
-        @Test()
+        @org.testng.annotations.Test()
         public void findByRue() {
         }
 
