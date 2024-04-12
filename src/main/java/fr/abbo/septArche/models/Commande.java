@@ -22,10 +22,10 @@ public class Commande {
     private Date dateComm;
     private String status;
     private float prixHT;
-    private double tva = 0.2;
+    private Double tva = 0.2;
     @Transient
-    private double prixTTC = prixHT * (1 + tva);
-    private double tvaCom = prixTTC * (1 - prixHT);
+    private Double prixTTC = prixHT * (1 + tva);
+    private Double tvaCom = prixTTC * (1 - prixHT);
 
     public Commande(){}
 
@@ -81,23 +81,23 @@ public class Commande {
         return prixHT;
     }
 
-    public void setPrixHT(float prixHT) {
+    public void setPrixHT(Float prixHT) {
         this.prixHT = prixHT;
     }
 
-    public double getTva() {
+    public Double getTva() {
         return tva;
     }
 
-    public void setTva(double tva) {
+    public void setTva(Double tva) {
         this.tva = tva;
     }
 
-    public double getPrixTTC() {
+    public Double getPrixTTC() {
         return prixTTC;
     }
 
-    public void setPrixTTC(double prixTTC) {
+    public void setPrixTTC(Double prixTTC) {
         this.prixTTC = prixTTC;
     }
 
