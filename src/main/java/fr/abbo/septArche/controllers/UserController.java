@@ -17,11 +17,21 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/users")
 public class UserController {
-    @Autowired
+
     private UserRepository rep;
 
-    @Autowired
     private UsersServices usersServices;
+
+    @Autowired
+    public UserController(UserRepository rep, UsersServices usersServices) {
+        this.rep = rep;
+        this.usersServices = usersServices;
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<User>> getAllUsers() {
+        return usersServices.findAll();
+    }
 
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable Long id) {
@@ -31,7 +41,7 @@ public class UserController {
     /**
      * Recherche un utilisateur par son nom utilisateur.
      */
-    @GetMapping("username")
+    @GetMapping("/username")
     public User findByUsername(@RequestParam String username) {
         return rep.findByUsername(username);
     }
@@ -39,12 +49,12 @@ public class UserController {
     /**
      * Recherche un utilisateur par son Email.
      */
-    @GetMapping("email")
+    @GetMapping("/email")
     public User findByEmail(@RequestParam String email) {
         return rep.findByEmail(email);
     }
 
-    @GetMapping("role")
+    @GetMapping("/role")
     public User findByRole(@RequestParam String role) {
         return rep.findByRole(role);
     }
@@ -52,7 +62,7 @@ public class UserController {
     /**
      * Methode de persistence d'un utilisateur.
      */
-    @PostMapping()
+    @PostMapping("/create")
     public String creerUser(@RequestBody User user ) {
         try {
             usersServices.creerUser(user);
